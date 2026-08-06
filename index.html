@@ -12,11 +12,7 @@ body{margin:0;background:#151b14;color:#f4eee8;font-family:Inter,sans-serif}
 linear-gradient(rgba(15,18,14,.55),rgba(15,18,14,.7)),
 url('https://images.unsplash.com/photo-1523293915678-d126868e96c3?auto=format&fit=crop&w=1600&q=80') center/cover;
 display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}
-.hero h1{
-    font:700 clamp(2.5rem,7vw,6rem) "Cormorant Garamond",serif;
-    line-height:1;
-    margin:.3em 0;
-    white-space:nowrap;
+.hero h1{font:700 clamp(3rem,9vw,7rem) "Cormorant Garamond",serif;line-height:.9;margin:.3em 0}
 .hero p{letter-spacing:4px;text-transform:uppercase}
 .container{max-width:900px;margin:-70px auto 50px;padding:0 20px}
 .card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:30px}
@@ -37,8 +33,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <section class="hero">
 <div>
 <p>BOOK YOUR SESSION WITH</p>
-<p>BOOK YOUR SESSION WITH</p>
-<h1>BLCKMORALS.INK</h1>
+<h1>BLCKMORALS.<br>INK</h1>
 </div>
 </section>
 
@@ -140,95 +135,66 @@ I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 P
 </div>
 
 <script>
-const agree = document.getElementById("agree");
-const btn = document.getElementById("generate");
+const agree=document.getElementById('agree');
+const btn=document.getElementById('generate');
+agree.onchange=()=>btn.disabled=!agree.checked;
 
-agree.addEventListener("change", () => {
-    btn.disabled = !agree.checked;
-});
+btn.onclick=()=>{
+const birth=new Date(document.getElementById('birth').value);
+const limit=new Date('2008-12-31');
+if(birth>limit){
+alert("Sorry! You must be at least 18 years old to book.");
+return;
+}
+const days=[...document.querySelectorAll('.checks input:checked')].map(x=>x.value).join(", ");
 
-btn.addEventListener("click", () => {
-
-    const fullName = document.getElementById("name").value;
-    const pronouns = document.getElementById("pronouns").value;
-    const birthInput = document.getElementById("birth").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const contact = document.getElementById("contact").value;
-    const booking = document.getElementById("booking").value;
-    const description = document.getElementById("description").value;
-    const placement = document.getElementById("placement").value;
-    const size = document.getElementById("size").value;
-    const budget = document.getElementById("budget").value;
-
-    if (!birthInput) {
-        alert("Please enter your birthdate.");
-        return;
-    }
-
-    const birth = new Date(birthInput);
-    const limit = new Date("2008-12-31");
-
-    if (birth > limit) {
-        alert("Sorry! You must be at least 18 years old to book.");
-        return;
-    }
-
-    const days = [...document.querySelectorAll(".checks input:checked")]
-        .map(x => x.value)
-        .join(", ");
-
-    const body = `Hi there!
+const body=`Hi there!
 
 How are you? My name is Gigi. Thank you for choosing me as your tattoo artist and submitting a tattoo proposal. I am excited for the opportunity to work with you!
 
 Please provide the following information:
 
 • Full Name:
-${fullName}
+${name.value}
 
 • Pronouns:
-${pronouns}
+${pronouns.value}
 
 • Birthdate:
-${birthInput}
+${birth.value}
 
 • Email:
-${email}
+${email.value}
 
 • Phone number:
-${phone}
+${phone.value}
 
 Preferred contact method:
-${contact}
+${contact.value}
 
 Booking for:
-${booking}
+${booking.value}
 
 1. Availability:
 ${days}
 
 2. Description of Tattoo:
-${description}
+${description.value}
 
 3. Tattoo placement:
-${placement}
+${placement.value}
 
 4. Tattoo size in inches (does not apply to flash tattoos):
-${size}
+${size.value}
 
 5. Budget (If any):
-${budget}
+${budget.value}
 
-6. Please attach photos of tattoo inspiration/examples here as well:
+6. Please attached photos of tattoo inspiration/examples here as well:
 `;
 
-    window.location.href =
-        "mailto:Booking@Blckmorals.ink?subject=" +
-        encodeURIComponent("Tattoo Booking Inquiry") +
-        "&body=" +
-        encodeURIComponent(body);
-});
+location.href="mailto:Booking@Blckmorals.ink?subject="+encodeURIComponent("Tattoo Booking Inquiry")+"&body="+encodeURIComponent(body);
+}
 </script>
 
 </body>
