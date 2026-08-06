@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLCKMORALS.INK | Tattoo Inquiry</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#151b14;color:#f4eee8;font-family:Inter,sans-serif}
+.hero{min-height:55vh;background:
+linear-gradient(rgba(15,18,14,.55),rgba(15,18,14,.7)),
+url('https://images.unsplash.com/photo-1523293915678-d126868e96c3?auto=format&fit=crop&w=1600&q=80') center/cover;
+display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}
+.hero h1{font:700 clamp(3rem,9vw,7rem) "Cormorant Garamond",serif;line-height:.9;margin:.3em 0}
+.hero p{letter-spacing:4px;text-transform:uppercase}
+.container{max-width:900px;margin:-70px auto 50px;padding:0 20px}
+.card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:30px}
+h2{font-family:"Cormorant Garamond",serif;font-size:2rem;margin-top:25px}
+label{display:block;margin-top:16px;font-weight:600}
+input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #6f7768;background:#222a20;color:#fff}
+textarea{min-height:120px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.note,.rates{background:#20281f;border-left:4px solid #bba17d;padding:18px;border-radius:12px;margin:18px 0}
+button,a.policy{display:inline-block;background:#c9b08b;color:#111;padding:14px 24px;border:none;border-radius:999px;text-decoration:none;font-weight:700;cursor:pointer}
+button:disabled{opacity:.4;cursor:not-allowed}
+.small{font-size:.9rem;color:#d7d0c7}
+.checks label{display:inline-block;margin-right:18px;font-weight:400}
+</style>
+</head>
+<body>
+<section class="hero">
+<div>
+<p>WHERE ART MEETS EXPRESSION</p>
+<h1>BLCKMORALS.<br>INK</h1>
+</div>
+</section>
+
+<div class="container">
+<div class="card">
+<h2>Thank you for your interest in getting tattooed by me.</h2>
+<p>Please complete the inquiry below so I can provide the most accurate estimate and booking information.</p>
+
+<a class="policy" href="#">View Booking Policies</a>
+
+<form id="form">
+
+<h2>About You</h2>
+
+<div class="grid">
+<div><label>Full Name</label><input id="name" required></div>
+
+<div><label>Pronouns</label>
+<select id="pronouns">
+<option>She / Her</option>
+<option>He / Him</option>
+<option>They / Them</option>
+</select></div>
+
+<div><label>Birthdate</label><input type="date" id="birth" required></div>
+
+<div><label>Email</label><input type="email" id="email" required></div>
+
+<div><label>Phone Number</label><input id="phone"></div>
+
+<div><label>Preferred Contact</label>
+<select id="contact">
+<option>Email</option>
+<option>Text</option>
+</select></div>
+</div>
+
+<h2>Booking Type</h2>
+
+<select id="booking">
+<option>Custom Tattoo</option>
+<option>Flash Tattoo</option>
+<option>Tattoo Touch-up</option>
+</select>
+
+<h2>Tattoo Details</h2>
+
+<div class="note">
+<strong>Availability</strong><br><br>
+I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 PM) and Saturday & Sunday (11:30 AM only). I am unavailable Tuesdays and Wednesdays.
+</div>
+
+<div class="checks">
+<label><input type="checkbox" value="Monday"> Monday</label>
+<label><input type="checkbox" value="Thursday"> Thursday</label>
+<label><input type="checkbox" value="Friday"> Friday</label>
+<label><input type="checkbox" value="Saturday"> Saturday</label>
+<label><input type="checkbox" value="Sunday"> Sunday</label>
+</div>
+
+<label>Description of Tattoo</label>
+<textarea id="description"></textarea>
+
+<label>Tattoo Placement</label>
+<input id="placement">
+
+<label>Tattoo Size (in inches)</label>
+<input id="size">
+
+<label>Budget (If any)</label>
+<input id="budget">
+
+<div class="rates">
+<h2 style="margin-top:0">Tattoo Rates</h2>
+
+<p><strong>$300 minimum</strong> per person (covers up to 2 hours).</p>
+
+<p><strong>$150/hour</strong> after the first two hours.</p>
+
+<p>A <strong>$100 non-refundable deposit</strong> is required to secure your appointment and is applied toward your tattoo on the day of your appointment.</p>
+</div>
+
+<label><input id="agree" type="checkbox"> I confirm that I am 18 years of age or older and have read and agree to the booking policies.</label>
+
+<br><br>
+
+<button id="generate" disabled type="button">Generate Email</button>
+
+<p class="small">Please remember to attach your tattoo inspiration photos before sending your email.</p>
+
+</form>
+
+</div>
+</div>
+
+<script>
+const agree=document.getElementById('agree');
+const btn=document.getElementById('generate');
+agree.onchange=()=>btn.disabled=!agree.checked;
+
+btn.onclick=()=>{
+const birth=new Date(document.getElementById('birth').value);
+const limit=new Date('2008-12-31');
+if(birth>limit){
+alert("Sorry! You must be at least 18 years old to book.");
+return;
+}
+const days=[...document.querySelectorAll('.checks input:checked')].map(x=>x.value).join(", ");
+
+const body=`Hi there!
+
+How are you? My name is Gigi. Thank you for choosing me as your tattoo artist and submitting a tattoo proposal. I am excited for the opportunity to work with you!
+
+Please provide the following information:
+
+• Full Name:
+${name.value}
+
+• Pronouns:
+${pronouns.value}
+
+• Birthdate:
+${birth.value}
+
+• Email:
+${email.value}
+
+• Phone number:
+${phone.value}
+
+Preferred contact method:
+${contact.value}
+
+Booking for:
+${booking.value}
+
+1. Availability:
+${days}
+
+2. Description of Tattoo:
+${description.value}
+
+3. Tattoo placement:
+${placement.value}
+
+4. Tattoo size in inches (does not apply to flash tattoos):
+${size.value}
+
+5. Budget (If any):
+${budget.value}
+
+6. Please attached photos of tattoo inspiration/examples here as well:
+`;
+
+location.href="mailto:Booking@Blckmorals.ink?subject="+encodeURIComponent("Tattoo Booking Inquiry")+"&body="+encodeURIComponent(body);
+}
+</script>
+
+</body>
+</html>
