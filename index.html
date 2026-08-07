@@ -49,28 +49,51 @@ button:disabled{opacity:.4;cursor:not-allowed}
     View Booking Policies
 </a>
 
-<form id="form">
+<form id="form"
+      action="https://formsubmit.co/Booking@Blckmorals.ink"
+      method="POST"
+      enctype="multipart/form-data">
+
+<input type="hidden" name="_subject" value="Tattoo Booking Inquiry">
+<input type="hidden" name="_template" value="table">
+   <input type="hidden" name="_autoresponse" value="Thank you for your inquiry! Your tattoo booking request has been received. Please allow up to one week for a response. If you don't hear back, please check your junk or spam folder.">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://booking.blckmorals.ink/thanks.html">
 
 <h2>About You</h2>
 
 <div class="grid">
-<div><label>Full Name</label><input id="name" required></div>
+<div><label>Full Name</label><input id="name" name="Full Name" required></div>
 
 <div><label>Pronouns</label>
-<select id="pronouns">
+<select id="pronouns" name="Pronouns">
 <option>She / Her</option>
 <option>He / Him</option>
 <option>They / Them</option>
 </select></div>
 
-<div><label>Birthdate</label><input type="date" id="birth" required></div>
+<div><label>Birthdate</label><input type="date" id="birth" name="Birthdate" required></div>
 
-<div><label>Email</label><input type="email" id="email" required></div>
 
-<div><label>Phone Number</label><input id="phone"></div>
+
+<div>
+    <label>Email</label>
+    <input
+        type="email"
+        id="email"
+        name="Email"
+        required>
+</div>
+
+<div>
+    <label>Phone Number</label>
+    <input
+        id="phone"
+        name="Phone Number">
+</div>
 
 <div><label>Preferred Contact</label>
-<select id="contact">
+<select id="contact" name="Preferred Contact">
 <option>Email</option>
 <option>Text</option>
 </select></div>
@@ -78,7 +101,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 <h2>Booking Type</h2>
 
-<select id="booking">
+<select id="booking" name="Booking Type">
 <option>Custom Tattoo</option>
 <option>Flash Tattoo</option>
 <option>Tattoo Touch-up</option>
@@ -92,24 +115,51 @@ I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 P
 </div>
 
 <div class="checks">
-<label><input type="checkbox" value="Monday"> Monday</label>
-<label><input type="checkbox" value="Thursday"> Thursday</label>
-<label><input type="checkbox" value="Friday"> Friday</label>
-<label><input type="checkbox" value="Saturday"> Saturday</label>
-<label><input type="checkbox" value="Sunday"> Sunday</label>
+<label><input type="checkbox" name="Availability[]" value="Monday"> Monday</label>
+<label><input type="checkbox" name="Availability[]" value="Thursday"> Thursday</label>
+<label><input type="checkbox" name="Availability[]" value="Friday"> Friday</label>
+<label><input type="checkbox" name="Availability[]" value="Saturday"> Saturday</label>
+<label><input type="checkbox" name="Availability[]" value="Sunday"> Sunday</label>
 </div>
 
 <label>Description of Tattoo</label>
-<textarea id="description"></textarea>
+<textarea
+    id="description"
+    name="Description of Tattoo"
+    required></textarea>
 
 <label>Tattoo Placement</label>
-<input id="placement">
+<input
+    id="placement"
+    name="Tattoo Placement"
+    required>
 
 <label>Tattoo Size (in inches)</label>
-<input id="size">
+<input
+    id="size"
+    name="Tattoo Size"
+    required>
 
 <label>Budget (If any)</label>
-<input id="budget">
+<input id="budget" name="Budget">
+   
+   <label>Reference Photos</label>
+
+<input
+    id="photos"
+    type="file"
+    name="attachment[]"
+    accept="image/*,.heic"
+    multiple>
+
+<p class="small" id="photoCount">
+0 of 7 photos selected
+</p>
+
+<p class="small">
+Upload up to 7 inspiration photos.
+Maximum upload size: 10 MB.
+</p>
 
 <div class="rates">
 <h2 style="margin-top:0">Tattoo Rates</h2>
@@ -121,11 +171,13 @@ I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 P
 <p>A <strong>$100 non-refundable deposit</strong> is required to secure your appointment and is applied toward your tattoo on the day of your appointment.</p>
 </div>
 
-<label><input id="agree" type="checkbox"> I confirm that I am 18 years of age or older and have read and agree to the booking policies.</label>
+<label><input id="agree" type="checkbox" required> I confirm that I am 18 years of age or older and have read and agree to the booking policies.</label>
 
 <br><br>
 
-<button id="generate" disabled type="button">Generate Email</button>
+<button id="submitBtn" disabled type="submit">
+    Submit Inquiry
+</button>
 
 <p class="small">Please remember to attach your tattoo inspiration photos before sending your email.</p>
 
@@ -135,96 +187,63 @@ I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 P
 </div>
 
 <script>
+const form = document.getElementById("form");
 const agree = document.getElementById("agree");
-const btn = document.getElementById("generate");
-
-agree.addEventListener("change", () => {
+const btn = document.getElementById("submitBtn");
+const birth = document.getElementById("birth");
+function updateButton() {
     btn.disabled = !agree.checked;
+}
+
+agree.addEventListener("change", updateButton);
+
+updateButton();
+
+const photos = document.getElementById("photos");
+
+photos.addEventListener("change", () => {
+
+    if (photos.files.length > 7) {
+        alert("Please upload no more than 7 photos.");
+        photos.value = "";
+        document.getElementById("photoCount").textContent =
+"0 of 7 photos selected";
+        return;
+    }
+
+    document.getElementById("photoCount").textContent =
+`${photos.files.length} of 7 photos selected`;
+
 });
+form.addEventListener("submit", function (e) {
 
-btn.addEventListener("click", () => {
-
-    const fullName = document.getElementById("name").value;
-    const pronouns = document.getElementById("pronouns").value;
-    const birthInput = document.getElementById("birth").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const contact = document.getElementById("contact").value;
-    const booking = document.getElementById("booking").value;
-    const description = document.getElementById("description").value;
-    const placement = document.getElementById("placement").value;
-    const size = document.getElementById("size").value;
-    const budget = document.getElementById("budget").value;
-
-    if (!birthInput) {
+    if (!birth.value) {
         alert("Please enter your birthdate.");
+        e.preventDefault();
         return;
     }
 
-    const birth = new Date(birthInput);
-    const limit = new Date("2008-12-31");
+    const today = new Date();
+    const birthday = new Date(birth.value);
 
-    if (birth > limit) {
+    let age = today.getFullYear() - birthday.getFullYear();
+
+    const monthDifference = today.getMonth() - birthday.getMonth();
+
+    if (
+        monthDifference < 0 ||
+        (monthDifference === 0 &&
+         today.getDate() < birthday.getDate())
+    ) {
+        age--;
+    }
+
+    if (age < 18) {
         alert("Sorry! You must be at least 18 years old to book.");
+        e.preventDefault();
         return;
     }
 
-    const days = [...document.querySelectorAll(".checks input:checked")]
-        .map(x => x.value)
-        .join(", ");
-
-    const body = `Hi there!
-
-How are you? My name is Gigi. Thank you for choosing me as your tattoo artist and submitting a tattoo proposal. I am excited for the opportunity to work with you!
-
-Please provide the following information:
-
-• Full Name:
-${fullName}
-
-• Pronouns:
-${pronouns}
-
-• Birthdate:
-${birthInput}
-
-• Email:
-${email}
-
-• Phone number:
-${phone}
-
-Preferred contact method:
-${contact}
-
-Booking for:
-${booking}
-
-1. Availability:
-${days}
-
-2. Description of Tattoo:
-${description}
-
-3. Tattoo placement:
-${placement}
-
-4. Tattoo size in inches (does not apply to flash tattoos):
-${size}
-
-5. Budget (If any):
-${budget}
-
-6. Please attach photos of tattoo inspiration/examples here as well:
-`;
-
-    const mailto =
-    "mailto:Booking@Blckmorals.ink?subject=" +
-    encodeURIComponent("Tattoo Booking Inquiry") +
-    "&body=" +
-    encodeURIComponent(body);
-
-window.open(mailto, "_self");
 });
 </script>
 
