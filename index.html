@@ -56,8 +56,9 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 <input type="hidden" name="_subject" value="Tattoo Booking Inquiry">
 <input type="hidden" name="_template" value="table">
-   <input type="hidden" name="_autoresponse" value="Thank you for your inquiry! Your tattoo booking request has been received. Please allow up to one week for a response. If you don't hear back, please check your junk or spam folder.">
+<input type="hidden" name="_autoresponse" value="Thank you for your inquiry! Your tattoo booking request has been received. Please allow up to one week for a response. If you don't hear back, please check your junk or spam folder.">
 <input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_webhook" value="false">
 <input type="hidden" name="_next" value="https://booking.blckmorals.ink/thanks.html">
 
 <h2>About You</h2>
@@ -78,11 +79,11 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 <div>
     <label>Email</label>
-    <input
-        type="email"
-        id="email"
-        name="Email"
-        required>
+   <input
+    type="email"
+    id="email"
+    name="_replyto"
+    required>
 </div>
 
 <div>
@@ -211,22 +212,7 @@ agree.addEventListener("change", updateButton);
 
 updateButton();
 
-const photos = document.getElementById("photos");
 
-photos.addEventListener("change", () => {
-
-    if (photos.files.length > 7) {
-        alert("Please upload no more than 7 photos.");
-        photos.value = "";
-        document.getElementById("photoCount").textContent =
-"0 of 7 photos selected";
-        return;
-    }
-
-    document.getElementById("photoCount").textContent =
-`${photos.files.length} of 7 photos selected`;
-
-});
 form.addEventListener("submit", function (e) {
 
     if (!birth.value) {
