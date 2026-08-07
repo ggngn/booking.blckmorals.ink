@@ -1,239 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BLCKMORALS.INK | Tattoo Inquiry</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#151b14;color:#f4eee8;font-family:Inter,sans-serif}
-.hero{min-height:55vh;background:
-linear-gradient(rgba(15,18,14,.55),rgba(15,18,14,.7)),
-url('https://images.unsplash.com/photo-1523293915678-d126868e96c3?auto=format&fit=crop&w=1600&q=80') center/cover;
-display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}
-.hero h1{font:700 clamp(3rem,9vw,7rem) "Cormorant Garamond",serif;line-height:.9;margin:.3em 0}
-.hero p{letter-spacing:4px;text-transform:uppercase}
-.container{max-width:900px;margin:-70px auto 50px;padding:0 20px}
-.card{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:30px}
-h2{font-family:"Cormorant Garamond",serif;font-size:2rem;margin-top:25px}
-label{display:block;margin-top:16px;font-weight:600}
-input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #6f7768;background:#222a20;color:#fff}
-textarea{min-height:120px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.note,.rates{background:#20281f;border-left:4px solid #bba17d;padding:18px;border-radius:12px;margin:18px 0}
-button,a.policy{display:inline-block;background:#c9b08b;color:#111;padding:14px 24px;border:none;border-radius:999px;text-decoration:none;font-weight:700;cursor:pointer}
-button:disabled{opacity:.4;cursor:not-allowed}
-.small{font-size:.9rem;color:#d7d0c7}
-.checks label{display:inline-block;margin-right:18px;font-weight:400}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Arial,sans-serif;
+
+background:#151b14;
+
+color:#f4eee8;
+
+padding:40px 20px;
+
+}
+
+.container{
+
+max-width:800px;
+
+margin:auto;
+
+background:#20281f;
+
+padding:35px;
+
+border-radius:18px;
+
+}
+
+h1{
+font-size:25px;
+margin-bottom:10px;
+text-align:center;
+}
+
+p{
+
+line-height:1.7;
+
+margin-bottom:18px;
+
+}
+
+.button{
+
+display:inline-block;
+
+background:#c9b08b;
+
+color:#111;
+
+padding:16px 26px;
+
+border-radius:999px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+margin-top:20px;
+
+transition:.25s;
+
+}
+
+.button:hover{
+
+opacity:.9;
+
+}
+
+.notice{
+
+margin-top:30px;
+
+padding:20px;
+
+background:#293127;
+
+border-left:5px solid #c9b08b;
+
+border-radius:10px;
+
+}
+
 </style>
+
 </head>
+
 <body>
-<section class="hero">
-<div>
-<p>BOOK YOUR SESSION WITH</p>
-<h1>BLCKMORALS.<br>INK</h1>
-</div>
-</section>
 
 <div class="container">
-<div class="card">
-<h2>Thank you for your interest in getting tattooed by me.</h2>
-<p>Please complete the inquiry below so I can provide the most accurate estimate and booking information.</p>
 
-<a class="policy"
-   href="/policies.html"
-   target="_blank"
-   rel="noopener">
-    View Booking Policies
-</a>
+<h1>BLCKMORALS.INK</h1>
 
-<form id="form"
-      action="https://api.web3forms.com/submit"
-      method="POST"
-      enctype="multipart/form-data">
+<p>
 
-<input type="hidden" name="access_key" value="526a80f2-7ce5-44de-8dcf-649e87ad49b3">
+Hello there!
 
-<input type="hidden" name="subject" value="New Tattoo Booking Inquiry">
-
-<input type="hidden" name="redirect" value="https://booking.blckmorals.ink/thanks.html">
-
-<input type="hidden" name="from_name" value="BLCKMORALS.INK">
-   
-   <input type="hidden" name="file_upload" value="true">
-
-<input type="checkbox" name="botcheck" style="display:none">
-<h2>About You</h2>
-
-<div class="grid">
-<div><label>Full Name</label><input id="name" name="Full Name" required></div>
-
-<div><label>Pronouns</label>
-<select id="pronouns" name="Pronouns">
-<option>She / Her</option>
-<option>He / Him</option>
-<option>They / Them</option>
-</select></div>
-
-<div><label>Birthdate</label><input type="date" id="birth" name="Birthdate" required></div>
-
-
-
-<div>
-    <label>Email</label>
-    <input
-        type="email"
-        id="email"
-        name="email"
-        required>
-</div>
-
-<div>
-    <label>Phone Number</label>
-    <input
-        id="phone"
-        name="Phone Number">
-</div>
-
-<div><label>Preferred Contact</label>
-<select id="contact" name="Preferred Contact">
-<option>Email</option>
-<option>Text</option>
-</select></div>
-</div>
-
-<h2>Booking Type</h2>
-
-<select id="booking" name="Booking Type">
-<option>Custom Tattoo</option>
-<option>Flash Tattoo</option>
-<option>Tattoo Touch-up</option>
-</select>
-
-<h2>Tattoo Details</h2>
-
-<div class="note">
-<strong>Availability</strong><br><br>
-I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 PM) and Saturday & Sunday (11:30 AM only). I am unavailable Tuesdays and Wednesdays.
-</div>
-
-<div class="checks">
-<label><input type="checkbox" name="Availability[]" value="Monday"> Monday</label>
-<label><input type="checkbox" name="Availability[]" value="Thursday"> Thursday</label>
-<label><input type="checkbox" name="Availability[]" value="Friday"> Friday</label>
-<label><input type="checkbox" name="Availability[]" value="Saturday"> Saturday</label>
-<label><input type="checkbox" name="Availability[]" value="Sunday"> Sunday</label>
-</div>
-
-<label>Description of Tattoo</label>
-<textarea
-    id="description"
-    name="Description of Tattoo"
-    required></textarea>
-
-<label>Tattoo Placement</label>
-<input
-    id="placement"
-    name="Tattoo Placement"
-    required>
-
-<label>Tattoo Size (in inches)</label>
-<input
-    id="size"
-    name="Tattoo Size"
-    required>
-
-<label>Budget (If any)</label>
-<input id="budget" name="Budget">
-   
-<label>Reference Photos</label>
-
-<p class="small">
-You may upload up to 4 inspiration photos (JPG, PNG, HEIC).
 </p>
 
-<label>Photo 1 (Required)</label>
-<input type="file" name="attachments[]" accept="image/*,.heic" required>
+<p>
 
-<label>Photo 2 (Optional)</label>
-<input type="file" name="attachments[]" accept="image/*,.heic">
+Thank you for choosing me as your tattoo artist and submitting a tattoo proposal.
 
-<label>Photo 3 (Optional)</label>
-<input type="file" name="attachments[]" accept="image/*,.heic">
+I'm excited for the opportunity to work with you.
 
-<label>Photo 4 (Optional)</label>
-<input type="file" name="attachments[]" accept="image/*,.heic">
-<div class="rates">
-<h2 style="margin-top:0">Tattoo Rates</h2>
+</p>
 
-<p><strong>$300 minimum</strong> per person (covers up to 2 hours).</p>
+<p>
 
-<p><strong>$150/hour</strong> after the first two hours.</p>
+Click the button below to begin your inquiry.
 
-<p>A <strong>$100 non-refundable deposit</strong> is required to secure your appointment and is applied toward your tattoo on the day of your appointment.</p>
-</div>
+Your email app will automatically open with the booking questionnaire.
 
-<label><input id="agree" type="checkbox" required> I confirm that I am 18 years of age or older and have read and agree to the booking policies.</label>
+After it opens, simply answer the questions,
+
+attach your tattoo inspiration photos,
+
+and press Send.
+
+</p>
+
+<a
+
+class="button"
+
+href="#"
+
+id="bookingButton">
+
+Start Tattoo Inquiry
+
+</a>
 
 <br><br>
 
-<button id="submitBtn" disabled type="submit">
-    Submit Inquiry
-</button>
+<a
 
-<p class="small">Please remember to attach your tattoo inspiration photos before sending your email.</p>
+class="button"
 
-</form>
+href="/policies.html"
+
+target="_blank">
+
+View Booking Policies
+
+</a>
+
+<div class="notice">
+
+<strong>Important</strong>
+
+<br><br>
+
+Please remember to attach your tattoo inspiration photos before sending your inquiry.
 
 </div>
+
 </div>
 
 <script>
-const form = document.getElementById("form");
-const agree = document.getElementById("agree");
-const btn = document.getElementById("submitBtn");
-const birth = document.getElementById("birth");
-function updateButton() {
-    btn.disabled = !agree.checked;
-}
 
-agree.addEventListener("change", updateButton);
+const inquiry = `
+━━━━━━━━━━━━━━━━━━━━━━━━━
+        BLCKMORALS.INK
+     TATTOO BOOKING INQUIRY
+━━━━━━━━━━━━━━━━━━━━━━━━━
+Hello there!
 
-updateButton();
+How are you? My name is Gigi. Thank you for choosing me as your tattoo artist and submitting a tattoo proposal. I am excited for the opportunity to work with you!
 
+━━━━━━━━━━━━━━━━━━━━━━━━━
+ABOUT YOU
+━━━━━━━━━━━━━━━━━━━━━━━━━
+Please provide the following information:
 
-form.addEventListener("submit", function (e) {
+• Full Name:
+• Pronouns:
+• Birthdate:
+• Email:
+• Phone Number:
 
-    if (!birth.value) {
-        alert("Please enter your birthdate.");
-        e.preventDefault();
-        return;
-    }
+Preferred contact method:
 
-    const today = new Date();
-    const birthday = new Date(birth.value);
+   • [ ] Email (please be sure to check your junk or spam folders)
+   • [ ] Text
 
-    let age = today.getFullYear() - birthday.getFullYear();
+━━━━━━━━━━━━━━━━━━━━━━━━━
+BOOKING TYPE
+━━━━━━━━━━━━━━━━━━━━━━━━━
+Booking for:
 
-    const monthDifference = today.getMonth() - birthday.getMonth();
+   • [ ] Custom Tattoo
+   • [ ] Flash Tattoo
+   • [ ] Tattoo Touch-up
 
-    if (
-        monthDifference < 0 ||
-        (monthDifference === 0 &&
-         today.getDate() < birthday.getDate())
-    ) {
-        age--;
-    }
+━━━━━━━━━━━━━━━━━━━━━━━━━
+TATTOO DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Availability:
 
-    if (age < 18) {
-        alert("Sorry! You must be at least 18 years old to book.");
-        e.preventDefault();
-        return;
-    }
+2. Description of Tattoo (please be specific):
+
+3. Tattoo placement (Example: Right inner forearm or Left bicep):
+
+4. Tattoo size in inches (does not apply to flash tattoos):
+
+5. Budget (If any):
+
+6. Feel free to attach tattoo inspiration photos/examples to this email.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+AGREEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] By checking this box, I confirm that I am 18 years of age or older and have fully read and agreed to the tattoo policies before booking this appointment.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+TATTOO RATES
+━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• $300 minimum per person (covers up to 2 hours)
+
+• $150/hour after the first 2 hours
+
+• A $100 non-refundable deposit is required to reserve your appointment. This deposit goes toward your tattoo total on the day of your appointment.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+
+I typically respond within one to two weeks. If you don't hear back from me, please check your Junk or Spam folder. If it's not there, feel free to send me another email.
+Please don't forget to review my booking policies before submitting your inquiry if you haven't already.
+
+Lastly, I'm excited to work with you on your tattoo! If you have any questions, don't hesitate to ask.
+
+Thank you!
+
+Best,
+Gigi
+@Blckmorals.ink`;
+
+document.getElementById("bookingButton").addEventListener("click", function(e){
+
+e.preventDefault();
+
+window.location.href =
+
+"mailto:booking@blckmorals.ink"
++ "?subject=" + encodeURIComponent("Tattoo Booking Inquiry")
++ "&body=" + encodeURIComponent(inquiry);
 
 });
+
 </script>
 
 </body>
