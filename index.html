@@ -50,17 +50,21 @@ button:disabled{opacity:.4;cursor:not-allowed}
 </a>
 
 <form id="form"
-      action="https://formsubmit.co/Booking@Blckmorals.ink"
+      action="https://api.web3forms.com/submit"
       method="POST"
       enctype="multipart/form-data">
 
-<input type="hidden" name="_subject" value="Tattoo Booking Inquiry">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_autoresponse" value="Thank you for your inquiry! Your tattoo booking request has been received. Please allow up to one week for a response. If you don't hear back, please check your junk or spam folder.">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_webhook" value="false">
-<input type="hidden" name="_next" value="https://booking.blckmorals.ink/thanks.html">
+<input type="hidden" name="access_key" value="526a80f2-7ce5-44de-8dcf-649e87ad49b3">
 
+<input type="hidden" name="subject" value="New Tattoo Booking Inquiry">
+
+<input type="hidden" name="redirect" value="https://booking.blckmorals.ink/thanks.html">
+
+<input type="hidden" name="from_name" value="BLCKMORALS.INK">
+   
+   <input type="hidden" name="file_upload" value="true">
+
+<input type="checkbox" name="botcheck" style="display:none">
 <h2>About You</h2>
 
 <div class="grid">
@@ -79,11 +83,11 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 <div>
     <label>Email</label>
-   <input
-    type="email"
-    id="email"
-    name="_replyto"
-    required>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        required>
 </div>
 
 <div>
@@ -150,30 +154,17 @@ I currently accept appointments Monday, Thursday, and Friday (11:30 AM or 3:30 P
 You may upload up to 4 inspiration photos (JPG, PNG, HEIC).
 </p>
 
-<label>Photo 1</label>
-<input
-    type="file"
-    name="attachment1"
-    accept="image/*,.heic">
+<label>Photo 1 (Required)</label>
+<input type="file" name="attachments[]" accept="image/*,.heic" required>
 
 <label>Photo 2 (Optional)</label>
-<input
-    type="file"
-    name="attachment2"
-    accept="image/*,.heic">
+<input type="file" name="attachments[]" accept="image/*,.heic">
 
 <label>Photo 3 (Optional)</label>
-<input
-    type="file"
-    name="attachment3"
-    accept="image/*,.heic">
+<input type="file" name="attachments[]" accept="image/*,.heic">
 
 <label>Photo 4 (Optional)</label>
-<input
-    type="file"
-    name="attachment4"
-    accept="image/*,.heic">
-
+<input type="file" name="attachments[]" accept="image/*,.heic">
 <div class="rates">
 <h2 style="margin-top:0">Tattoo Rates</h2>
 
