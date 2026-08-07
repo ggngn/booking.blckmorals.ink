@@ -218,11 +218,13 @@ ${budget}
 6. Please attach photos of tattoo inspiration/examples here as well:
 `;
 
-    window.location.href =
-        "mailto:Booking@Blckmorals.ink?subject=" +
-        encodeURIComponent("Tattoo Booking Inquiry") +
-        "&body=" +
-        encodeURIComponent(body);
+    const mailto =
+    "mailto:Booking@Blckmorals.ink?subject=" +
+    encodeURIComponent("Tattoo Booking Inquiry") +
+    "&body=" +
+    encodeURIComponent(body);
+
+window.open(mailto, "_self");
 });
 </script>
 
