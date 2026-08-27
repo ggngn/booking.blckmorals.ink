@@ -4,851 +4,2432 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BLCKMORALS.INK | Healed Work</title>
+<title>BLCKMORALS.INK | Client Guide</title>
 
 <style>
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:Helvetica,Arial,sans-serif;
-background:#0f0f0f;
-color:#f2f2f2;
-line-height:1.8;
-background-image:
-linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
-url('background.jpg');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+    background:#050505;
+    color:#f2f0eb;
+    font-family:Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
 }
 
-/* Progress Bar */
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root{
+    --black:#050505;
+    --white:#f2f0eb;
+    --paper:#e9e7e1;
+    --gray:#999791;
+    --line:rgba(242,240,235,.25);
+    --dark-line:rgba(5,5,5,.22);
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
 
 #progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#fff;
-width:0;
-z-index:1000;
+    position:fixed;
+    top:0;
+    left:0;
+    height:3px;
+    width:0;
+    background:#fff;
+    z-index:9999;
 }
 
-/* Hero */
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4vw;
+
+    z-index:500;
+
+    mix-blend-mode:difference;
+
+    font-size:10px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+}
+
+.nav-logo{
+    font-weight:bold;
+    letter-spacing:.12em;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0;
+    height:1px;
+    background:#fff;
+    transition:.3s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+
+/* =========================================================
+   GLOBAL SECTION LABEL
+   ========================================================= */
+
+.section-bar{
+    height:34px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+
+    align-items:center;
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
+    font-size:8px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.section-bar span:nth-child(2){
+    text-align:center;
+}
+
+.section-bar span:nth-child(3){
+    text-align:right;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero{
-min-height:70vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:2rem;
+    min-height:100vh;
+    padding:100px 4vw 40px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    position:relative;
 }
 
-.hero p{
-opacity:.8;
-letter-spacing:.3em;
-text-transform:uppercase;
-margin-bottom:.5rem;
+.hero-top{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+
+    font-size:9px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+
+    opacity:.75;
+}
+
+.hero-top div:nth-child(2){
+    text-align:center;
+}
+
+.hero-top div:nth-child(3){
+    text-align:right;
+}
+
+.hero-content{
+    position:relative;
+    padding:8vh 0 4vh;
+}
+
+.hero-small{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-bottom:25px;
+    opacity:.65;
 }
 
 .hero h1{
-font-size:clamp(3rem,10vw,5.5rem);
-letter-spacing:.08em;
-line-height:1.1;
+    font-size:clamp(4rem,12vw,11rem);
+    font-weight:500;
+    line-height:.78;
+    letter-spacing:-.065em;
+    text-transform:uppercase;
+
+    max-width:1200px;
 }
 
-.hero .intro{
-max-width:650px;
-margin-top:1.5rem;
-opacity:.8;
-font-size:1rem;
+.hero h1 span{
+    display:block;
+}
+
+.hero h1 span:nth-child(2){
+    margin-left:8vw;
+}
+
+.hero-description{
+    max-width:330px;
+    margin-left:auto;
+    margin-top:50px;
+
+    font-size:10px;
+    line-height:1.5;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+
+    opacity:.7;
+}
+
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+
+    font-size:9px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
 }
 
 .scroll{
-margin-top:3rem;
-opacity:.7;
-animation:bounce 2s infinite;
+    animation:scrollMove 2s infinite;
 }
 
-@keyframes bounce{
-50%{
-transform:translateY(10px)
-}
-}
-
-/* Main Sections */
-
-section{
-max-width:1100px;
-margin:2rem auto;
-padding:2.2rem;
-background:rgba(255,255,255,.07);
-backdrop-filter:blur(10px);
-border-radius:18px;
-border:1px solid rgba(255,255,255,.08);
+@keyframes scrollMove{
+    50%{
+        transform:translateY(8px);
+    }
 }
 
-h2{
-margin-bottom:1rem;
-font-size:2rem;
+
+/* =========================================================
+   PAPER SECTIONS
+   ========================================================= */
+
+.paper{
+    background:var(--paper);
+    color:#050505;
 }
 
-h3{
-margin-bottom:.4rem;
+.paper .section-bar{
+    border-color:var(--dark-line);
 }
 
-p{
-margin-bottom:1rem;
+
+/* =========================================================
+   INTRO / CLIENT GUIDE
+   ========================================================= */
+
+.intro-section{
+    padding:0 4vw 10vw;
 }
 
-/* Gallery Intro */
-
-.gallery-intro{
-text-align:center;
-max-width:700px;
-margin:0 auto 2rem;
+.intro-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    min-height:650px;
+    align-items:center;
 }
 
-.gallery-intro p{
-opacity:.8;
+.intro-title{
+    font-size:clamp(4rem,10vw,9rem);
+    line-height:.78;
+    letter-spacing:-.07em;
+    text-transform:uppercase;
 }
 
-/* Gallery */
-
-.gallery{
-columns:3 250px;
-column-gap:1.2rem;
+.intro-title span{
+    display:block;
 }
 
-.gallery-item{
-break-inside:avoid;
-margin-bottom:1.2rem;
-background:rgba(255,255,255,.05);
-border-radius:14px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.08);
-transition:transform .3s ease,background .3s ease;
-cursor:pointer;
+.intro-center{
+    max-width:270px;
+    margin:auto;
 }
 
-.gallery-item:hover{
-transform:translateY(-4px);
-background:rgba(255,255,255,.08);
+.intro-center h3{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-bottom:18px;
 }
 
-.gallery-item img{
-display:block;
-width:100%;
-height:auto;
-transition:transform .4s ease;
+.intro-center p{
+    font-size:10px;
+    line-height:1.65;
+    margin-bottom:18px;
 }
 
-.gallery-item:hover img{
-transform:scale(1.02);
+.intro-right{
+    text-align:right;
+    align-self:end;
+    padding-bottom:30px;
 }
 
-.caption{
-padding:1rem 1.1rem 1.15rem;
+.intro-right span{
+    display:block;
+    font-size:8px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    margin-bottom:8px;
 }
 
-.caption h3{
-font-size:.95rem;
-letter-spacing:.04em;
+
+/* =========================================================
+   STYLE SECTION
+   ========================================================= */
+
+.style-section{
+    padding:0 4vw 8vw;
 }
 
-.caption p{
-font-size:.82rem;
-opacity:.65;
-margin:0;
+.style-layout{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:5vw;
+
+    padding-top:70px;
 }
 
-/* Empty Gallery Message */
-
-.gallery-note{
-text-align:center;
-padding:3rem 1rem;
-opacity:.65;
+.massive-title{
+    font-size:clamp(4rem,11vw,10rem);
+    line-height:.75;
+    letter-spacing:-.07em;
+    text-transform:uppercase;
 }
 
-/* Buttons */
-
-.button-row{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:1rem;
-flex-wrap:wrap;
-margin-top:1.5rem;
+.massive-title span{
+    display:block;
 }
 
-a.button{
-display:inline-block;
-padding:15px 28px;
-border:1px solid #fff;
-border-radius:999px;
-color:#fff;
-text-decoration:none;
-transition:.3s;
+.style-copy{
+    padding-top:20px;
 }
 
-a.button:hover{
-background:#fff;
-color:#000;
+.style-copy h3{
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:20px;
 }
 
-a.button.secondary{
-border-color:rgba(255,255,255,.4);
-color:rgba(255,255,255,.85);
+.style-copy ul{
+    list-style:none;
 }
 
-a.button.secondary:hover{
-background:rgba(255,255,255,.1);
-color:#fff;
+.style-copy li{
+    border-top:1px solid var(--dark-line);
+    padding:11px 0;
+
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
 }
 
-/* Lightbox */
-
-.lightbox{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.94);
-display:flex;
-justify-content:center;
-align-items:center;
-padding:2rem;
-z-index:2000;
-opacity:0;
-visibility:hidden;
-transition:opacity .3s ease,visibility .3s ease;
+.style-copy li:last-child{
+    border-bottom:1px solid var(--dark-line);
 }
 
-.lightbox.active{
-opacity:1;
-visibility:visible;
+.not{
+    margin-top:70px;
 }
 
-.lightbox img{
-max-width:92vw;
-max-height:88vh;
-width:auto;
-height:auto;
-object-fit:contain;
-border-radius:8px;
-box-shadow:0 20px 60px rgba(0,0,0,.6);
+.not h3{
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:20px;
 }
 
-.lightbox-close{
-position:absolute;
-top:20px;
-right:25px;
-font-size:2rem;
-line-height:1;
-color:#fff;
-cursor:pointer;
-opacity:.8;
-transition:.3s;
+.not li{
+    opacity:.72;
 }
 
-.lightbox-close:hover{
-opacity:1;
-transform:scale(1.1);
+
+/* =========================================================
+   RATES
+   ========================================================= */
+
+.rates{
+    background:#050505;
+    color:#f2f0eb;
+
+    padding:0 4vw 9vw;
 }
 
-.lightbox-caption{
-position:absolute;
-bottom:20px;
-left:0;
-right:0;
-text-align:center;
-padding:0 1rem;
-color:#fff;
-font-size:.85rem;
-opacity:.75;
+.rates .section-bar{
+    border-color:var(--line);
 }
 
-/* Footer */
+.rates-title{
+    font-size:clamp(4rem,12vw,11rem);
+    line-height:.76;
+    letter-spacing:-.07em;
+    text-transform:uppercase;
+
+    padding:80px 0;
+}
+
+.rate-grid{
+    border-top:1px solid var(--line);
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.rate{
+    min-height:230px;
+    padding:22px;
+
+    border-right:1px solid var(--line);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.rate:first-child{
+    border-left:1px solid var(--line);
+}
+
+.rate-number{
+    font-size:8px;
+    letter-spacing:.15em;
+    opacity:.5;
+}
+
+.rate h3{
+    font-size:25px;
+    font-weight:400;
+    letter-spacing:-.04em;
+}
+
+.rate p{
+    font-size:9px;
+    line-height:1.5;
+    text-transform:uppercase;
+    opacity:.6;
+}
+
+
+/* =========================================================
+   BOOKING CONDITIONS
+   ========================================================= */
+
+.booking{
+    background:var(--paper);
+    color:#050505;
+
+    padding:0 4vw 10vw;
+}
+
+.booking-title{
+    font-size:clamp(4rem,11vw,10rem);
+    line-height:.76;
+    letter-spacing:-.07em;
+    text-transform:uppercase;
+
+    padding:80px 0;
+}
+
+details{
+    border-top:1px solid var(--dark-line);
+}
+
+details:last-child{
+    border-bottom:1px solid var(--dark-line);
+}
+
+summary{
+    cursor:pointer;
+    list-style:none;
+
+    display:grid;
+    grid-template-columns:70px 1fr auto;
+
+    align-items:center;
+
+    padding:20px 0;
+
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+summary::after{
+    content:"+";
+    font-size:18px;
+    font-weight:300;
+}
+
+details[open] summary::after{
+    content:"−";
+}
+
+.detail-number{
+    opacity:.4;
+}
+
+.detail-content{
+    max-width:650px;
+    padding:0 0 28px 70px;
+
+    font-size:11px;
+    line-height:1.7;
+}
+
+.detail-content p{
+    margin-bottom:14px;
+}
+
+.detail-content ul{
+    padding-left:17px;
+}
+
+.detail-content li{
+    margin:4px 0;
+}
+
+
+/* =========================================================
+   AFTERCARE
+   ========================================================= */
+
+.aftercare{
+    background:#050505;
+    color:#f2f0eb;
+
+    padding:0 4vw 10vw;
+}
+
+.aftercare-title{
+    font-size:clamp(4rem,11vw,10rem);
+    line-height:.75;
+    letter-spacing:-.07em;
+    text-transform:uppercase;
+
+    padding:80px 0;
+}
+
+.aftercare-intro{
+    max-width:500px;
+    margin-left:auto;
+
+    font-size:10px;
+    line-height:1.7;
+    text-transform:uppercase;
+    opacity:.65;
+
+    margin-bottom:70px;
+}
+
+.aftercare details{
+    border-color:var(--line);
+}
+
+.aftercare details:last-child{
+    border-color:var(--line);
+}
+
+.aftercare summary{
+    padding:22px 0;
+}
+
+.aftercare .detail-content{
+    opacity:.8;
+}
+
+
+/* =========================================================
+   HEALED WORK PROMO
+   ========================================================= */
+
+.healed{
+    background:var(--paper);
+    color:#050505;
+
+    padding:0 4vw 10vw;
+}
+
+.healed-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5vw;
+
+    padding-top:80px;
+}
+
+.healed-title{
+    font-size:clamp(4rem,10vw,9rem);
+    line-height:.75;
+    letter-spacing:-.07em;
+    text-transform:uppercase;
+}
+
+.healed-title span{
+    display:block;
+}
+
+.healed-copy{
+    max-width:330px;
+    align-self:end;
+}
+
+.healed-copy p{
+    font-size:10px;
+    line-height:1.7;
+    text-transform:uppercase;
+    opacity:.7;
+}
+
+.view-link{
+    display:inline-flex;
+    align-items:center;
+    gap:15px;
+
+    margin-top:25px;
+
+    padding-bottom:7px;
+
+    border-bottom:1px solid #050505;
+
+    font-size:9px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+.view-link span{
+    transition:.3s ease;
+}
+
+.view-link:hover span{
+    transform:translateX(8px);
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.cta{
+    min-height:80vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:70px 4vw 40px;
+}
+
+.cta-title{
+    font-size:clamp(5rem,14vw,13rem);
+    line-height:.7;
+    letter-spacing:-.08em;
+    text-transform:uppercase;
+}
+
+.cta-title span{
+    display:block;
+}
+
+.cta-title span:nth-child(2){
+    margin-left:10vw;
+}
+
+.cta-bottom{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items:end;
+
+    font-size:9px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+}
+
+.cta-button{
+    justify-self:center;
+
+    border:1px solid #f2f0eb;
+
+    padding:17px 28px;
+
+    transition:.3s ease;
+}
+
+.cta-button:hover{
+    background:#f2f0eb;
+    color:#050505;
+}
+
+.cta-bottom div:last-child{
+    text-align:right;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer{
-text-align:center;
-padding:4rem 2rem;
-opacity:.7;
+    border-top:1px solid var(--line);
+
+    padding:25px 4vw 35px;
+
+    display:flex;
+    justify-content:space-between;
+
+    font-size:8px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+
+    opacity:.6;
 }
 
-/* Mobile */
 
-@media(max-width:700px){
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
-body{
-background-attachment:scroll;
+@media(max-width:800px){
+
+    .nav{
+        padding:0 5vw;
+    }
+
+    .nav-links{
+        gap:14px;
+    }
+
+    .nav-links a:nth-child(2),
+    .nav-links a:nth-child(3){
+        display:none;
+    }
+
+    .hero{
+        padding:90px 5vw 30px;
+    }
+
+    .hero-top{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero-top div:nth-child(2){
+        display:none;
+    }
+
+    .hero h1{
+        font-size:clamp(4rem,18vw,8rem);
+    }
+
+    .hero h1 span:nth-child(2){
+        margin-left:4vw;
+    }
+
+    .hero-description{
+        margin-left:20%;
+        max-width:260px;
+    }
+
+    .intro-section,
+    .style-section,
+    .rates,
+    .booking,
+    .aftercare,
+    .healed{
+        padding-left:5vw;
+        padding-right:5vw;
+    }
+
+    .section-bar{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .section-bar span:nth-child(3){
+        display:none;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        min-height:auto;
+        gap:60px;
+        padding:70px 0;
+    }
+
+    .intro-title{
+        font-size:clamp(4rem,18vw,8rem);
+    }
+
+    .intro-center{
+        margin-left:15%;
+    }
+
+    .intro-right{
+        text-align:left;
+        padding:0;
+    }
+
+    .style-layout{
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .massive-title{
+        font-size:clamp(4rem,18vw,8rem);
+    }
+
+    .style-copy{
+        padding-top:0;
+    }
+
+    .not{
+        margin-top:50px;
+    }
+
+    .rates-title,
+    .booking-title,
+    .aftercare-title{
+        font-size:clamp(4rem,18vw,8rem);
+        padding:65px 0;
+    }
+
+    .rate-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .rate{
+        min-height:190px;
+    }
+
+    .rate:nth-child(2){
+        border-right:none;
+    }
+
+    .rate:nth-child(3),
+    .rate:nth-child(4){
+        border-top:1px solid var(--line);
+    }
+
+    .detail-content{
+        padding-left:30px;
+        padding-right:10px;
+    }
+
+    summary{
+        grid-template-columns:45px 1fr auto;
+    }
+
+    .healed-layout{
+        grid-template-columns:1fr;
+        gap:60px;
+        padding-top:65px;
+    }
+
+    .healed-title{
+        font-size:clamp(4rem,18vw,8rem);
+    }
+
+    .healed-copy{
+        margin-left:15%;
+    }
+
+    .cta{
+        min-height:75vh;
+        padding-left:5vw;
+        padding-right:5vw;
+    }
+
+    .cta-title{
+        font-size:clamp(5rem,19vw,9rem);
+    }
+
+    .cta-bottom{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .cta-button{
+        justify-self:start;
+    }
+
+    .cta-bottom div:last-child{
+        text-align:left;
+    }
+
+    footer{
+        padding-left:5vw;
+        padding-right:5vw;
+    }
+
 }
 
-.hero{
-min-height:65vh;
-}
 
-section{
-margin:1rem;
-padding:1.5rem;
-border-radius:15px;
-}
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-.hero h1{
-font-size:clamp(2.8rem,14vw,4.5rem);
-}
+@media(prefers-reduced-motion:reduce){
 
-.gallery{
-columns:2 140px;
-column-gap:.8rem;
-}
+    html{
+        scroll-behavior:auto;
+    }
 
-.gallery-item{
-margin-bottom:.8rem;
-border-radius:10px;
-}
-
-.caption{
-padding:.7rem .8rem .8rem;
-}
-
-.caption h3{
-font-size:.8rem;
-}
-
-.caption p{
-font-size:.7rem;
-}
-
-.lightbox{
-padding:1rem;
-}
-
-.lightbox img{
-max-width:96vw;
-max-height:82vh;
-}
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+    }
 
 }
 
-@media(max-width:420px){
-
-.gallery{
-columns:1;
-}
-
-.gallery-item{
-margin-bottom:1rem;
-}
-
-}
 </style>
 </head>
 
+
 <body>
 
-<!-- Progress Bar -->
+
+<!-- ======================================================
+     PROGRESS
+     ====================================================== -->
+
 <div id="progress"></div>
 
 
-<!-- Hero -->
+<!-- ======================================================
+     NAVIGATION
+     ====================================================== -->
+
+<nav class="nav">
+
+    <a href="/" class="nav-logo">
+        BLCKMORALS.INK
+    </a>
+
+    <div class="nav-links">
+        <a href="#style">Style</a>
+        <a href="healed-work.html">Healed Work</a>
+        <a href="#booking">Guide</a>
+        <a href="/">Book</a>
+    </div>
+
+</nav>
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
 
 <header class="hero">
 
-<p>BLCKMORALS.INK</p>
+    <div class="hero-top">
 
-<h1>HEALED WORK</h1>
+        <div>
+            BLCKMORALS.INK
+        </div>
 
-<p class="intro">
-A collection of tattoos photographed after the initial healing process,
-showing how my work settles into the skin over time.
-</p>
+        <div>
+            CLIENT GUIDE
+        </div>
 
-<div class="scroll">↓ Scroll</div>
+        <div>
+            PORTLAND / OR
+        </div>
+
+    </div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            00 — BEFORE YOU BOOK
+        </div>
+
+        <h1>
+            <span>CLIENT</span>
+            <span>GUIDE</span>
+        </h1>
+
+        <div class="hero-description">
+            Everything you need to know before
+            getting tattooed by Gigi.
+            Style, pricing, booking conditions,
+            aftercare, and more.
+        </div>
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <div>
+            BLCKMORALS.INK
+        </div>
+
+        <div class="scroll">
+            ↓ SCROLL
+        </div>
+
+        <div>
+            01 / 06
+        </div>
+
+    </div>
 
 </header>
 
 
-<!-- Introduction -->
+<!-- ======================================================
+     INTRO
+     ====================================================== -->
 
-<section>
+<section class="paper intro-section">
 
-<div class="gallery-intro">
+    <div class="section-bar">
 
-<h2>Healed Tattoos</h2>
+        <span>PART 01</span>
 
-<p>
-Fresh tattoos are only part of the story. I wanted to create a space where
-you can see how my work actually looks once the skin has had time to settle.
-</p>
+        <span>INSIDE BLCKMORALS</span>
 
-<p>
-Healing can vary from person to person depending on skin, placement,
-aftercare, lifestyle, and the individual tattoo. These photos are intended
-to give you a more realistic idea of how my work can look once healed.
-</p>
+        <span>CLIENT GUIDE</span>
 
-</div>
+    </div>
+
+
+    <div class="intro-grid">
+
+        <div class="intro-title">
+
+            <span>BEHIND</span>
+            <span>THE</span>
+            <span>WORK</span>
+
+        </div>
+
+
+        <div class="intro-center">
+
+            <h3>
+                A NOTE FROM GIGI
+            </h3>
+
+            <p>
+                Thank you so much for reaching out
+                and for your interest in getting
+                tattooed by me.
+            </p>
+
+            <p>
+                Before submitting your inquiry,
+                I encourage you to look through
+                this guide. It covers my style,
+                pricing, policies, and everything
+                you need to know before booking.
+            </p>
+
+            <p>
+                Once your inquiry is submitted,
+                I'll follow up so we can talk
+                through your piece and plan
+                the next steps.
+            </p>
+
+        </div>
+
+
+        <div class="intro-right">
+
+            <span>01 — STYLE</span>
+            <span>02 — RATES</span>
+            <span>03 — BOOKING</span>
+            <span>04 — AFTERCARE</span>
+            <span>05 — HEALED WORK</span>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- Gallery -->
+<!-- ======================================================
+     STYLE
+     ====================================================== -->
 
-<section>
+<section class="paper style-section" id="style">
 
-<h2 style="text-align:center;">Gallery</h2>
+    <div class="section-bar">
 
-<div class="gallery">
+        <span>PART 02</span>
 
+        <span>MY STYLE</span>
 
-<!-- ==============================
-     HEALED TATTOO #1
-     ============================== -->
+        <span>VIEW WORK</span>
 
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-01.jpg',
-'Botanical Fine Line · Upper Arm · Healed 8 Months'
-)">
+    </div>
 
-<img
-src="healed-01.jpg"
-alt="Healed botanical fine-line tattoo on upper arm"
-loading="lazy"
->
 
-<div class="caption">
+    <div class="style-layout">
 
-<h3>Botanical Fine Line</h3>
 
-<p>
-Upper Arm · Healed 8 Months
-</p>
+        <div class="massive-title">
 
-</div>
+            <span>WHAT</span>
+            <span>I</span>
+            <span>TATTOO</span>
 
-</div>
+        </div>
 
 
-<!-- ==============================
-     HEALED TATTOO #2
-     ============================== -->
+        <div class="style-copy">
 
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-02.jpg',
-'Floral Tattoo · Forearm · Healed 1 Year'
-)">
+            <h3>
+                THE WORK
+            </h3>
 
-<img
-src="healed-02.jpg"
-alt="Healed floral tattoo on forearm"
-loading="lazy"
->
+            <ul>
 
-<div class="caption">
+                <li>
+                    Custom illustrative, abstract,
+                    and floral tattoos
+                </li>
 
-<h3>Floral</h3>
+                <li>
+                    Fine-line, high-contrast pieces
+                    with detail and flow
+                </li>
 
-<p>
-Forearm · Healed 1 Year
-</p>
+                <li>
+                    Small to medium and/or
+                    selective large projects
+                </li>
 
-</div>
+                <li>
+                    Select symbolic or conceptual
+                    designs that align with my style
+                </li>
 
-</div>
+            </ul>
 
 
-<!-- ==============================
-     HEALED TATTOO #3
-     ============================== -->
+            <div class="not">
 
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-03.jpg',
-'Fine Line Botanical · Shoulder · Healed 6 Months'
-)">
+                <h3>
+                    WHAT I DON'T TATTOO
+                </h3>
 
-<img
-src="healed-03.jpg"
-alt="Healed fine-line botanical tattoo on shoulder"
-loading="lazy"
->
+                <ul>
 
-<div class="caption">
+                    <li>
+                        Portraits, hyper-realism,
+                        photorealistic or landscape realism
+                    </li>
 
-<h3>Fine Line Botanical</h3>
+                    <li>
+                        Copying another artist's exact work
+                    </li>
 
-<p>
-Shoulder · Healed 6 Months
-</p>
+                    <li>
+                        Full-color tattoos
+                        (I currently offer limited color)
+                    </li>
 
-</div>
+                    <li>
+                        Cover-ups, reworks, or touch-ups
+                        of tattoos done by other artists
+                    </li>
 
-</div>
+                    <li>
+                        Hand, finger-side, face,
+                        or intimate/private areas
+                    </li>
 
+                    <li>
+                        Unsafe or medically contraindicated
+                        placements
+                    </li>
 
-<!-- ==============================
-     HEALED TATTOO #4
-     ============================== -->
+                </ul>
 
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-04.jpg',
-'Abstract Botanical · Upper Arm · Healed 1 Year'
-)">
+            </div>
 
-<img
-src="healed-04.jpg"
-alt="Healed abstract botanical tattoo on upper arm"
-loading="lazy"
->
+        </div>
 
-<div class="caption">
-
-<h3>Abstract Botanical</h3>
-
-<p>
-Upper Arm · Healed 1 Year
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ==============================
-     HEALED TATTOO #5
-     ============================== -->
-
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-05.jpg',
-'Fine Line Floral · Rib · Healed 10 Months'
-)">
-
-<img
-src="healed-05.jpg"
-alt="Healed fine-line floral tattoo on ribs"
-loading="lazy"
->
-
-<div class="caption">
-
-<h3>Fine Line Floral</h3>
-
-<p>
-Rib · Healed 10 Months
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ==============================
-     HEALED TATTOO #6
-     ============================== -->
-
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-06.jpg',
-'Botanical Tattoo · Thigh · Healed 7 Months'
-)">
-
-<img
-src="healed-06.jpg"
-alt="Healed botanical tattoo on thigh"
-loading="lazy"
->
-
-<div class="caption">
-
-<h3>Botanical</h3>
-
-<p>
-Thigh · Healed 7 Months
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ==============================
-     HEALED TATTOO #7
-     ============================== -->
-
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-07.jpg',
-'Floral Tattoo · Back · Healed 1 Year'
-)">
-
-<img
-src="healed-07.jpg"
-alt="Healed floral tattoo on back"
-loading="lazy"
->
-
-<div class="caption">
-
-<h3>Floral</h3>
-
-<p>
-Back · Healed 1 Year
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ==============================
-     HEALED TATTOO #8
-     ============================== -->
-
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-08.jpg',
-'Fine Line Tattoo · Collarbone · Healed 5 Months'
-)">
-
-<img
-src="healed-08.jpg"
-alt="Healed fine-line tattoo near collarbone"
-loading="lazy"
->
-
-<div class="caption">
-
-<h3>Fine Line</h3>
-
-<p>
-Collarbone · Healed 5 Months
-</p>
-
-</div>
-
-</div>
-
-
-<!-- ==============================
-     HEALED TATTOO #9
-     ============================== -->
-
-<div class="gallery-item"
-onclick="openLightbox(
-'healed-09.jpg',
-'Botanical Tattoo · Arm · Healed 9 Months'
-)">
-
-<img
-src="healed-09.jpg"
-alt="Healed botanical tattoo on arm"
-loading="lazy"
->
-
-<div class="caption">
-
-<h3>Botanical</h3>
-
-<p>
-Arm · Healed 9 Months
-</p>
-
-</div>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- Note -->
+<!-- ======================================================
+     RATES
+     ====================================================== -->
 
-<section>
+<section class="rates" id="rates">
 
-<div class="gallery-intro">
+    <div class="section-bar">
 
-<h2>A Note About Healing</h2>
+        <span>PART 03</span>
 
-<p>
-Every tattoo heals differently. Factors such as skin type, placement,
-sun exposure, aftercare, and individual healing can affect how a tattoo
-looks once settled.
-</p>
+        <span>RATES</span>
 
-<p>
-Because of this, healed tattoos may appear softer, lighter, or slightly
-different from when they were freshly tattooed. This is completely normal.
-</p>
+        <span>PRICING</span>
 
-</div>
+    </div>
+
+
+    <div class="rates-title">
+
+        <span>THE</span>
+        <span>NUMBERS</span>
+
+    </div>
+
+
+    <div class="rate-grid">
+
+
+        <div class="rate">
+
+            <div class="rate-number">
+                01 / MINIMUM
+            </div>
+
+            <h3>
+                $300
+            </h3>
+
+            <p>
+                Minimum tattoo price.
+                Covers up to two hours.
+            </p>
+
+        </div>
+
+
+        <div class="rate">
+
+            <div class="rate-number">
+                02 / HOURLY
+            </div>
+
+            <h3>
+                $150 / HR
+            </h3>
+
+            <p>
+                Applies after the
+                two-hour minimum.
+            </p>
+
+        </div>
+
+
+        <div class="rate">
+
+            <div class="rate-number">
+                03 / FLASH
+            </div>
+
+            <h3>
+                INDIVIDUAL
+            </h3>
+
+            <p>
+                Flash tattoos are
+                currently unavailable.
+            </p>
+
+        </div>
+
+
+        <div class="rate">
+
+            <div class="rate-number">
+                04 / TOUCH-UP
+            </div>
+
+            <h3>
+                FREE
+            </h3>
+
+            <p>
+                Complimentary touch-ups
+                within one year.
+            </p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<!-- Booking CTA -->
+<!-- ======================================================
+     BOOKING CONDITIONS
+     ====================================================== -->
 
-<section style="text-align:center;">
+<section class="booking" id="booking">
 
-<h2>Love What You See?</h2>
+    <div class="section-bar">
 
-<p>
-If my style feels like the right fit for your next piece,
-I'd love to hear what you have in mind.
-</p>
+        <span>PART 04</span>
 
-<div class="button-row">
+        <span>BOOKING CONDITIONS</span>
 
-<a class="button" href="/">
-Start Tattoo Inquiry
-</a>
+        <span>READ BEFORE BOOKING</span>
 
-<a class="button secondary" href="client-guide.html">
-Back to Client Guide
-</a>
+    </div>
 
-</div>
+
+    <div class="booking-title">
+
+        <span>BEFORE</span>
+        <span>WE BOOK</span>
+
+    </div>
+
+
+    <!-- Deposit -->
+
+    <details open>
+
+        <summary>
+
+            <span class="detail-number">
+                01
+            </span>
+
+            <span>
+                Deposit
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <p>
+                A $100 non-refundable,
+                non-transferable deposit is required
+                to reserve your appointment.
+                It is applied toward the final
+                tattoo cost.
+            </p>
+
+            <p>
+                A deposit will not be requested
+                until we've discussed your tattoo,
+                agreed upon pricing, and confirmed
+                the booking details and terms.
+            </p>
+
+            <p>
+                Your inquiry simply starts the
+                conversation. Once we've agreed
+                on everything and you're happy
+                to move forward, the deposit will
+                be requested to officially reserve
+                your appointment.
+            </p>
+
+        </div>
+
+    </details>
+
+
+    <!-- Multiple -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                02
+            </span>
+
+            <span>
+                Same-Day Multiple Booking
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <p>
+                I don't offer group or couple sessions.
+            </p>
+
+            <p>
+                Each client is booked and billed
+                individually, even when appointments
+                are scheduled for the same day
+                and time.
+            </p>
+
+            <p>
+                Therefore, each person must submit
+                their own deposit to reserve their
+                individual appointment.
+            </p>
+
+            <p>
+                You're more than welcome to pay
+                together or separately on the day
+                of your appointment.
+            </p>
+
+        </div>
+
+    </details>
+
+
+    <!-- Rescheduling -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                03
+            </span>
+
+            <span>
+                Rescheduling & Cancellation
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <p>
+                Please provide at least 7 days notice.
+            </p>
+
+            <p>
+                Deposits are forfeited for late
+                cancellations or no-shows.
+            </p>
+
+            <p>
+                More than two reschedules require
+                a new deposit.
+            </p>
+
+        </div>
+
+    </details>
+
+
+    <!-- Arrival -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                04
+            </span>
+
+            <span>
+                Arrival
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <p>
+                Please arrive on time and no more
+                than 10 minutes early.
+            </p>
+
+            <p>
+                Arriving 30+ minutes late may
+                result in cancellation.
+            </p>
+
+        </div>
+
+    </details>
+
+
+    <!-- Sketch -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                05
+            </span>
+
+            <span>
+                Sketch Review
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <p>
+                I usually don't send designs ahead
+                of time to protect the artwork and
+                keep it original for you.
+            </p>
+
+            <p>
+                Each piece is created specifically
+                for your appointment, and we'll
+                review it together in person so
+                you can request any tweaks before
+                starting.
+            </p>
+
+            <p>
+                If I ever need extra input, I'll
+                reach out with a sketch beforehand.
+                Otherwise, the final design will
+                be ready for us to review together
+                at your session.
+            </p>
+
+        </div>
+
+    </details>
+
+
+    <!-- Payment -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                06
+            </span>
+
+            <span>
+                Payment Methods
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>Cash</li>
+                <li>Zelle</li>
+                <li>Debit</li>
+                <li>Credit (+3% processing fee)</li>
+
+            </ul>
+
+            <p>
+                Venmo, Cash App, Apple Pay and
+                PayPal are not accepted.
+            </p>
+
+        </div>
+
+    </details>
 
 </section>
 
+
+<!-- ======================================================
+     AFTERCARE
+     ====================================================== -->
+
+<section class="aftercare" id="aftercare">
+
+    <div class="section-bar">
+
+        <span>PART 05</span>
+
+        <span>AFTERCARE</span>
+
+        <span>HEAL WELL</span>
+
+    </div>
+
+
+    <div class="aftercare-title">
+
+        <span>TAKE</span>
+        <span>CARE</span>
+
+    </div>
+
+
+    <div class="aftercare-intro">
+
+        Your tattoo is an open wound while
+        it heals. Keep it clean, protect it
+        from friction and sunlight, and give
+        your skin the time it needs to heal.
+
+    </div>
+
+
+    <!-- Artist Instructions -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                01
+            </span>
+
+            <span>
+                Follow Your Artist's Instructions
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Your artist knows how your tattoo
+                    was applied and what is best for
+                    your specific piece.
+                </li>
+
+                <li>
+                    If you have questions or concerns
+                    during healing, reach out to your
+                    artist before changing your
+                    aftercare routine.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Second Skin -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                02
+            </span>
+
+            <span>
+                First 3–4 Days — Second Skin
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep the second-skin bandage
+                    on for 3–4 days.
+                </li>
+
+                <li>
+                    A small amount of blood, plasma,
+                    or ink underneath the bandage
+                    is normal.
+                </li>
+
+                <li>
+                    Remove the bandage sooner if
+                    it becomes loose, water gets
+                    underneath it, or you develop
+                    significant irritation.
+                </li>
+
+                <li>
+                    Ideally, remove the bandage
+                    toward the end of a shower
+                    to help loosen the adhesive.
+                </li>
+
+                <li>
+                    Do not aggressively pull the
+                    bandage off while it is completely dry.
+                </li>
+
+                <li>
+                    Slowly peel it back over itself
+                    rather than pulling upward.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Washing -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                03
+            </span>
+
+            <span>
+                After Removing the Bandage
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>Wash your hands before touching your tattoo.</li>
+
+                <li>
+                    Gently wash the tattoo with
+                    lukewarm water and mild,
+                    fragrance-free liquid soap.
+                </li>
+
+                <li>Use only your clean fingertips.</li>
+
+                <li>
+                    Do not use bar soap, washcloths,
+                    loofahs, or sponges.
+                </li>
+
+                <li>Do not scrub or exfoliate the tattoo.</li>
+
+                <li>Rinse thoroughly.</li>
+
+                <li>
+                    Gently pat dry with a clean
+                    paper towel — do not rub.
+                </li>
+
+                <li>
+                    Allow the tattoo to air-dry briefly
+                    if needed.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Moisturize -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                04
+            </span>
+
+            <span>
+                Moisturize
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Apply a very thin layer of
+                    lightweight, fragrance-free lotion.
+                </li>
+
+                <li>
+                    A little goes a long way.
+                </li>
+
+                <li>
+                    Moisturize approximately 2–3 times
+                    daily or as needed.
+                </li>
+
+                <li>
+                    Your tattoo should not look greasy,
+                    wet, or excessively shiny.
+                </li>
+
+                <li>
+                    Avoid heavy layers of
+                    petroleum-based products.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Normal -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                05
+            </span>
+
+            <span>
+                What's Normal
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>Mild redness, swelling, tenderness, or warmth</li>
+                <li>Slight clear or tinted fluid</li>
+                <li>Itching</li>
+                <li>Dryness or tightness</li>
+                <li>Peeling or flaking</li>
+                <li>
+                    A dull, cloudy, or slightly uneven
+                    appearance while healing
+                </li>
+
+            </ul>
+
+            <p>
+                <strong>
+                    DO NOT PICK, SCRATCH, OR PEEL YOUR TATTOO.
+                </strong>
+            </p>
+
+        </div>
+
+    </details>
+
+
+    <!-- Sun -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                06
+            </span>
+
+            <span>
+                Sun Protection
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep your healing tattoo out
+                    of direct sunlight.
+                </li>
+
+                <li>
+                    Do not apply sunscreen to
+                    an unhealed tattoo.
+                </li>
+
+                <li>
+                    Once completely healed, use
+                    SPF 30–50+ whenever your tattoo
+                    is exposed to the sun.
+                </li>
+
+                <li>
+                    Sun exposure can cause tattoos
+                    to fade faster.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Clothing -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                07
+            </span>
+
+            <span>
+                Clothing & Friction
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Wear clean, loose-fitting clothing
+                    when possible.
+                </li>
+
+                <li>
+                    Avoid tight clothing, straps,
+                    waistbands, or anything that
+                    repeatedly rubs against the tattoo.
+                </li>
+
+                <li>
+                    Be especially mindful of friction
+                    during the first week.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Water -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                08
+            </span>
+
+            <span>
+                Water & Soaking
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>Normal showers are okay.</li>
+
+                <li>
+                    Avoid excessively hot or
+                    prolonged showers.
+                </li>
+
+                <li>
+                    <strong>
+                        Do NOT submerge your tattoo
+                        until it is fully healed.
+                    </strong>
+                </li>
+
+                <li>Avoid baths.</li>
+                <li>Avoid swimming pools.</li>
+                <li>Avoid hot tubs / Jacuzzis.</li>
+                <li>Avoid lakes.</li>
+                <li>Avoid rivers.</li>
+                <li>Avoid oceans.</li>
+                <li>Avoid saunas and steam rooms.</li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Exercise -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                09
+            </span>
+
+            <span>
+                Exercise
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Be mindful of excessive sweating,
+                    friction, stretching, and contact
+                    with the tattoo.
+                </li>
+
+                <li>
+                    Avoid workouts or equipment that
+                    repeatedly rub against the healing area.
+                </li>
+
+                <li>
+                    Keep gym equipment and anything
+                    touching the tattoo clean.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Sleeping -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                10
+            </span>
+
+            <span>
+                Sleeping
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep your bedding clean while
+                    your tattoo is healing.
+                </li>
+
+                <li>
+                    Avoid sleeping directly on
+                    the tattoo when possible.
+                </li>
+
+                <li>
+                    If your tattoo sticks to fabric,
+                    do not pull it off dry.
+                </li>
+
+                <li>
+                    Moisten the fabric with lukewarm
+                    water and gently release it.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Pets -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                11
+            </span>
+
+            <span>
+                Pets
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep pets from licking, scratching,
+                    or rubbing against your tattoo.
+                </li>
+
+                <li>
+                    Avoid direct contact with pet hair,
+                    saliva, and dirty pet bedding while
+                    your tattoo is healing.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Healing -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                12
+            </span>
+
+            <span>
+                Healing Time
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Most tattoos take approximately
+                    2–4 weeks for the surface of the
+                    skin to heal.
+                </li>
+
+                <li>
+                    Deeper layers can continue healing
+                    beyond this.
+                </li>
+
+                <li>
+                    Your tattoo may look dull, cloudy,
+                    dry, or flaky during healing.
+                </li>
+
+                <li>
+                    Don't judge the final appearance
+                    while your tattoo is still healing.
+                </li>
+
+                <li>
+                    Be patient and allow your skin
+                    to heal at its own pace.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+    <!-- Help -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+                13
+            </span>
+
+            <span>
+                When to Get Help
+            </span>
+
+        </summary>
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    If something about your tattoo
+                    concerns you, contact your artist.
+                </li>
+
+                <li>
+                    If symptoms become severe,
+                    unusual, or progressively worse,
+                    seek advice from a qualified
+                    medical professional.
+                </li>
+
+                <li>
+                    Your artist can provide tattoo
+                    aftercare guidance but cannot
+                    diagnose medical conditions
+                    or infections.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+</section>
+
+
+<!-- ======================================================
+     HEALED WORK
+     ====================================================== -->
+
+<section class="healed" id="healed">
+
+    <div class="section-bar">
+
+        <span>PART 06</span>
+
+        <span>HEALED WORK</span>
+
+        <span>PORTFOLIO</span>
+
+    </div>
+
+
+    <div class="healed-layout">
+
+        <div class="healed-title">
+
+            <span>WHAT</span>
+            <span>REMAINS</span>
+
+        </div>
+
+
+        <div class="healed-copy">
+
+            <p>
+                Fresh tattoos are only part of
+                the story. Take a look at work
+                photographed after the initial
+                healing process.
+            </p>
+
+            <p>
+                Healing varies from person to
+                person, but these images give
+                you a more realistic idea of how
+                my work settles into the skin.
+            </p>
+
+            <a
+                class="view-link"
+                href="healed-work.html"
+            >
+                VIEW HEALED WORK
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FINAL CTA
+     ====================================================== -->
+
+<section class="cta">
+
+    <div>
+
+        <div class="hero-small">
+            LAST STEP
+        </div>
+
+        <div class="cta-title">
+
+            <span>READY?</span>
+            <span>LET'S</span>
+            <span>CREATE.</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="cta-bottom">
+
+        <div>
+            BLCKMORALS.INK<br>
+            PORTLAND / OR
+        </div>
+
+
+        <a
+            href="/"
+            class="cta-button"
+        >
+            START TATTOO INQUIRY →
+        </a>
+
+
+        <div>
+            CLIENT GUIDE<br>
+            END / 06
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
 
 <footer>
-© BLCKMORALS.INK
+
+    <span>
+        © BLCKMORALS.INK
+    </span>
+
+    <span>
+        TATTOO / ART / PORTLAND
+    </span>
+
 </footer>
 
 
-<!-- Lightbox -->
-
-<div
-class="lightbox"
-id="lightbox"
-onclick="closeLightbox(event)"
->
-
-<div
-class="lightbox-close"
-onclick="closeLightbox()"
->
-×
-</div>
-
-<img
-id="lightbox-image"
-src=""
-alt=""
->
-
-<div
-class="lightbox-caption"
-id="lightbox-caption"
-></div>
-
-</div>
-
+<!-- ======================================================
+     SCRIPT
+     ====================================================== -->
 
 <script>
 
-/* ==============================
-   SCROLL PROGRESS
-   ============================== */
+/* Scroll progress */
 
-addEventListener("scroll",()=>{
+window.addEventListener("scroll",function(){
 
-const d=document.documentElement;
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
 
-const scrollable=d.scrollHeight-d.clientHeight;
+    const scroll =
+        document.documentElement.scrollTop;
 
-const progress=scrollable>0
-? (d.scrollTop/scrollable)*100
-: 0;
+    const percentage =
+        documentHeight > 0
+        ? (scroll / documentHeight) * 100
+        : 0;
 
-document.getElementById("progress").style.width=
-progress+"%";
+    document.getElementById("progress").style.width =
+        percentage + "%";
 
 });
 
 
-/* ==============================
-   LIGHTBOX
-   ============================== */
+/* Close other accordions when opening one */
 
-function openLightbox(image,caption){
+const details =
+    document.querySelectorAll("details");
 
-const lightbox=document.getElementById("lightbox");
+details.forEach(function(target){
 
-const lightboxImage=
-document.getElementById("lightbox-image");
+    target.addEventListener("toggle",function(){
 
-const lightboxCaption=
-document.getElementById("lightbox-caption");
+        if(!target.open) return;
 
-lightboxImage.src=image;
+        details.forEach(function(other){
 
-lightboxImage.alt=caption;
+            if(
+                other !== target &&
+                other.open
+            ){
+                other.open = false;
+            }
 
-lightboxCaption.textContent=caption;
+        });
 
-lightbox.classList.add("active");
-
-document.body.style.overflow="hidden";
-
-}
-
-
-/* ==============================
-   CLOSE LIGHTBOX
-   ============================== */
-
-function closeLightbox(event){
-
-if(
-event &&
-event.target !== document.getElementById("lightbox") &&
-event.target !== document.querySelector(".lightbox-close")
-){
-return;
-}
-
-document.getElementById("lightbox")
-.classList.remove("active");
-
-document.body.style.overflow="";
-
-}
-
-
-/* ==============================
-   ESC KEY
-   ============================== */
-
-document.addEventListener("keydown",(event)=>{
-
-if(event.key==="Escape"){
-
-document.getElementById("lightbox")
-.classList.remove("active");
-
-document.body.style.overflow="";
-
-}
+    });
 
 });
 
 </script>
+
 
 </body>
 </html>
