@@ -1,291 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BLCKMORALS.INK | Tattoo Inquiry</title>
+<title>BLCKMORALS.INK | Healed Work</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box
+}
+
+html{
+scroll-behavior:smooth
 }
 
 body{
-    font-family:Helvetica, Arial, sans-serif;
-    background:#151b14;
-    color:#f4eee8;
-    padding:40px 20px;
+font-family:Helvetica,Arial,sans-serif;
+background:#0f0f0f;
+color:#f2f2f2;
+line-height:1.8;
+background-image:
+linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
+url('background.jpg');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-.container{
-    max-width:800px;
-    margin:auto;
-    background:#20281f;
-    padding:35px;
-    border-radius:18px;
+/* Progress Bar */
+
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:#fff;
+width:0;
+z-index:1000;
 }
 
-h1{
-    font-family:"DM Serif Display", serif;
-    font-size:35px;
-    margin-bottom:10px;
-    text-align:center;
+/* Hero */
+
+.hero{
+min-height:70vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:2rem;
 }
 
-.welcome{
-    font-family:Helvetica, Arial, sans-serif;
-    font-size:13px;
-    line-height:1.7;
+.hero p{
+opacity:.8;
+letter-spacing:.3em;
+text-transform:uppercase;
+margin-bottom:.5rem;
+}
+
+.hero h1{
+font-size:clamp(3rem,10vw,5.5rem);
+letter-spacing:.08em;
+line-height:1.1;
+}
+
+.hero .intro{
+max-width:650px;
+margin-top:1.5rem;
+opacity:.8;
+font-size:1rem;
+}
+
+.scroll{
+margin-top:3rem;
+opacity:.7;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+50%{
+transform:translateY(10px)
+}
+}
+
+/* Main Sections */
+
+section{
+max-width:1100px;
+margin:2rem auto;
+padding:2.2rem;
+background:rgba(255,255,255,.07);
+backdrop-filter:blur(10px);
+border-radius:18px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+h2{
+margin-bottom:1rem;
+font-size:2rem;
+}
+
+h3{
+margin-bottom:.4rem;
 }
 
 p{
-    line-height:1.7;
-    margin-bottom:18px;
+margin-bottom:1rem;
 }
 
-.button{
+/* Gallery Intro */
 
+.gallery-intro{
+text-align:center;
+max-width:700px;
+margin:0 auto 2rem;
+}
+
+.gallery-intro p{
+opacity:.8;
+}
+
+/* Gallery */
+
+.gallery{
+columns:3 250px;
+column-gap:1.2rem;
+}
+
+.gallery-item{
+break-inside:avoid;
+margin-bottom:1.2rem;
+background:rgba(255,255,255,.05);
+border-radius:14px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+transition:transform .3s ease,background .3s ease;
+cursor:pointer;
+}
+
+.gallery-item:hover{
+transform:translateY(-4px);
+background:rgba(255,255,255,.08);
+}
+
+.gallery-item img{
+display:block;
+width:100%;
+height:auto;
+transition:transform .4s ease;
+}
+
+.gallery-item:hover img{
+transform:scale(1.02);
+}
+
+.caption{
+padding:1rem 1.1rem 1.15rem;
+}
+
+.caption h3{
+font-size:.95rem;
+letter-spacing:.04em;
+}
+
+.caption p{
+font-size:.82rem;
+opacity:.65;
+margin:0;
+}
+
+/* Empty Gallery Message */
+
+.gallery-note{
+text-align:center;
+padding:3rem 1rem;
+opacity:.65;
+}
+
+/* Buttons */
+
+.button-row{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:1rem;
+flex-wrap:wrap;
+margin-top:1.5rem;
+}
+
+a.button{
 display:inline-block;
-
-background:#c9b08b;
-
-color:#111;
-
-padding:16px 26px;
-
+padding:15px 28px;
+border:1px solid #fff;
 border-radius:999px;
-
+color:#fff;
 text-decoration:none;
-
-font-weight:bold;
-
-margin-top:20px;
-
-transition:.25s;
-
+transition:.3s;
 }
 
-.button:hover{
-
-opacity:.9;
-
+a.button:hover{
+background:#fff;
+color:#000;
 }
 
-.notice{
+a.button.secondary{
+border-color:rgba(255,255,255,.4);
+color:rgba(255,255,255,.85);
+}
 
-margin-top:30px;
+a.button.secondary:hover{
+background:rgba(255,255,255,.1);
+color:#fff;
+}
 
-padding:20px;
+/* Lightbox */
 
-background:#293127;
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.94);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:2rem;
+z-index:2000;
+opacity:0;
+visibility:hidden;
+transition:opacity .3s ease,visibility .3s ease;
+}
 
-border-left:5px solid #c9b08b;
+.lightbox.active{
+opacity:1;
+visibility:visible;
+}
 
+.lightbox img{
+max-width:92vw;
+max-height:88vh;
+width:auto;
+height:auto;
+object-fit:contain;
+border-radius:8px;
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+.lightbox-close{
+position:absolute;
+top:20px;
+right:25px;
+font-size:2rem;
+line-height:1;
+color:#fff;
+cursor:pointer;
+opacity:.8;
+transition:.3s;
+}
+
+.lightbox-close:hover{
+opacity:1;
+transform:scale(1.1);
+}
+
+.lightbox-caption{
+position:absolute;
+bottom:20px;
+left:0;
+right:0;
+text-align:center;
+padding:0 1rem;
+color:#fff;
+font-size:.85rem;
+opacity:.75;
+}
+
+/* Footer */
+
+footer{
+text-align:center;
+padding:4rem 2rem;
+opacity:.7;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+body{
+background-attachment:scroll;
+}
+
+.hero{
+min-height:65vh;
+}
+
+section{
+margin:1rem;
+padding:1.5rem;
+border-radius:15px;
+}
+
+.hero h1{
+font-size:clamp(2.8rem,14vw,4.5rem);
+}
+
+.gallery{
+columns:2 140px;
+column-gap:.8rem;
+}
+
+.gallery-item{
+margin-bottom:.8rem;
 border-radius:10px;
+}
+
+.caption{
+padding:.7rem .8rem .8rem;
+}
+
+.caption h3{
+font-size:.8rem;
+}
+
+.caption p{
+font-size:.7rem;
+}
+
+.lightbox{
+padding:1rem;
+}
+
+.lightbox img{
+max-width:96vw;
+max-height:82vh;
+}
 
 }
 
-.instructions{
-    font-size:12px;
-    font-family:Helvetica, Arial, sans-serif;
-    font-weight:400;
-    line-height:1.6;
-    color:#c9b08b;
-    text-align:left;
+@media(max-width:420px){
+
+.gallery{
+columns:1;
 }
 
+.gallery-item{
+margin-bottom:1rem;
+}
+
+}
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<!-- Progress Bar -->
+<div id="progress"></div>
 
-<h1>BLCKMORALS.INK</h1>
 
-<p class="welcome">
+<!-- Hero -->
 
-Hello there!
+<header class="hero">
 
+<p>BLCKMORALS.INK</p>
+
+<h1>HEALED WORK</h1>
+
+<p class="intro">
+A collection of tattoos photographed after the initial healing process,
+showing how my work settles into the skin over time.
 </p>
 
-<p class="welcome">
+<div class="scroll">↓ Scroll</div>
 
-Thank you for choosing me as your tattoo artist and submitting a tattoo proposal.
+</header>
 
-I'm excited for the opportunity to work with you.
 
-<br><br>
+<!-- Introduction -->
 
-Best,<br>
-Gigi @Blckmorals.ink
+<section>
 
+<div class="gallery-intro">
+
+<h2>Healed Tattoos</h2>
+
+<p>
+Fresh tattoos are only part of the story. I wanted to create a space where
+you can see how my work actually looks once the skin has had time to settle.
 </p>
 
-<hr>
-
-<br>
-
-<p class="instructions">
-    
-    *FOLLOW THESE STEPS IF YOU'RE COMING FROM <b>INSTAGRAM APP</b>*<br><br>
-• Press and hold down "Start Tattoo Inquiry" and click "Open link"
-then click "Start Tattoo Inquiry" again.<br><br>
-
-• Your email app will automatically open with the booking questionnaire.<br><br>
-
-• After it opens, simply answer the question<br><br>
-
-• Press "Send"<br>
-
+<p>
+Healing can vary from person to person depending on skin, placement,
+aftercare, lifestyle, and the individual tattoo. These photos are intended
+to give you a more realistic idea of how my work can look once healed.
 </p>
 
-<a
+</div>
 
-class="button"
+</section>
 
-href="#"
 
-id="bookingButton">
+<!-- Gallery -->
 
+<section>
+
+<h2 style="text-align:center;">Gallery</h2>
+
+<div class="gallery">
+
+
+<!-- ==============================
+     HEALED TATTOO #1
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-01.jpg',
+'Botanical Fine Line · Upper Arm · Healed 8 Months'
+)">
+
+<img
+src="healed-01.jpg"
+alt="Healed botanical fine-line tattoo on upper arm"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Botanical Fine Line</h3>
+
+<p>
+Upper Arm · Healed 8 Months
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #2
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-02.jpg',
+'Floral Tattoo · Forearm · Healed 1 Year'
+)">
+
+<img
+src="healed-02.jpg"
+alt="Healed floral tattoo on forearm"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Floral</h3>
+
+<p>
+Forearm · Healed 1 Year
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #3
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-03.jpg',
+'Fine Line Botanical · Shoulder · Healed 6 Months'
+)">
+
+<img
+src="healed-03.jpg"
+alt="Healed fine-line botanical tattoo on shoulder"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Fine Line Botanical</h3>
+
+<p>
+Shoulder · Healed 6 Months
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #4
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-04.jpg',
+'Abstract Botanical · Upper Arm · Healed 1 Year'
+)">
+
+<img
+src="healed-04.jpg"
+alt="Healed abstract botanical tattoo on upper arm"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Abstract Botanical</h3>
+
+<p>
+Upper Arm · Healed 1 Year
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #5
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-05.jpg',
+'Fine Line Floral · Rib · Healed 10 Months'
+)">
+
+<img
+src="healed-05.jpg"
+alt="Healed fine-line floral tattoo on ribs"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Fine Line Floral</h3>
+
+<p>
+Rib · Healed 10 Months
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #6
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-06.jpg',
+'Botanical Tattoo · Thigh · Healed 7 Months'
+)">
+
+<img
+src="healed-06.jpg"
+alt="Healed botanical tattoo on thigh"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Botanical</h3>
+
+<p>
+Thigh · Healed 7 Months
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #7
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-07.jpg',
+'Floral Tattoo · Back · Healed 1 Year'
+)">
+
+<img
+src="healed-07.jpg"
+alt="Healed floral tattoo on back"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Floral</h3>
+
+<p>
+Back · Healed 1 Year
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #8
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-08.jpg',
+'Fine Line Tattoo · Collarbone · Healed 5 Months'
+)">
+
+<img
+src="healed-08.jpg"
+alt="Healed fine-line tattoo near collarbone"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Fine Line</h3>
+
+<p>
+Collarbone · Healed 5 Months
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     HEALED TATTOO #9
+     ============================== -->
+
+<div class="gallery-item"
+onclick="openLightbox(
+'healed-09.jpg',
+'Botanical Tattoo · Arm · Healed 9 Months'
+)">
+
+<img
+src="healed-09.jpg"
+alt="Healed botanical tattoo on arm"
+loading="lazy"
+>
+
+<div class="caption">
+
+<h3>Botanical</h3>
+
+<p>
+Arm · Healed 9 Months
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- Note -->
+
+<section>
+
+<div class="gallery-intro">
+
+<h2>A Note About Healing</h2>
+
+<p>
+Every tattoo heals differently. Factors such as skin type, placement,
+sun exposure, aftercare, and individual healing can affect how a tattoo
+looks once settled.
+</p>
+
+<p>
+Because of this, healed tattoos may appear softer, lighter, or slightly
+different from when they were freshly tattooed. This is completely normal.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- Booking CTA -->
+
+<section style="text-align:center;">
+
+<h2>Love What You See?</h2>
+
+<p>
+If my style feels like the right fit for your next piece,
+I'd love to hear what you have in mind.
+</p>
+
+<div class="button-row">
+
+<a class="button" href="/">
 Start Tattoo Inquiry
-
 </a>
 
-<br><br> 
-<hr>
-
-<a class="button" href="policies.html">
-Booking Policies
+<a class="button secondary" href="client-guide.html">
+Back to Client Guide
 </a>
-
-<br><br>
-
-<a class="button" href="aftercare.html">
-Tattoo Aftercare
-</a>
-
-<div class="notice">
-
-<strong>Important</strong>
-
-<br><br>
-
-Please remember to attach your tattoo inspiration photos before sending your inquiry.
 
 </div>
 
+</section>
+
+
+<footer>
+© BLCKMORALS.INK
+</footer>
+
+
+<!-- Lightbox -->
+
+<div
+class="lightbox"
+id="lightbox"
+onclick="closeLightbox(event)"
+>
+
+<div
+class="lightbox-close"
+onclick="closeLightbox()"
+>
+×
 </div>
+
+<img
+id="lightbox-image"
+src=""
+alt=""
+>
+
+<div
+class="lightbox-caption"
+id="lightbox-caption"
+></div>
+
+</div>
+
 
 <script>
 
-const inquiry = `
-━━━━━━━━━━━
-        BLCKMORALS.INK
-     TATTOO BOOKING INQUIRY
-━━━━━━━━━━━
-Hello there!
+/* ==============================
+   SCROLL PROGRESS
+   ============================== */
 
-How are you? My name is Gigi. Thank you for choosing me as your tattoo artist and submitting a tattoo proposal. I am excited for the opportunity to work with you!
+addEventListener("scroll",()=>{
 
-━━━━━━━━━━━
-ABOUT YOU
-━━━━━━━━━━━
-Please provide the following information:
+const d=document.documentElement;
 
-• Full Name:
-• Pronouns:
-• Birthdate:
-• Email:
-• Phone Number:
+const scrollable=d.scrollHeight-d.clientHeight;
 
-Preferred contact method:
+const progress=scrollable>0
+? (d.scrollTop/scrollable)*100
+: 0;
 
-   • [  ] Email (please be sure to check your junk or spam folders)
-   • [  ] Text
+document.getElementById("progress").style.width=
+progress+"%";
 
-━━━━━━━━━━━
-BOOKING TYPE
-━━━━━━━━━━━
-
-   • [  ] Custom Tattoo
-   • [  ] Flash Tattoo
-   • [  ] Tattoo Touch-up
-
-━━━━━━━━━━━
-TATTOO DETAILS
-━━━━━━━━━━━
-1. Availability (except Tuesday + Wenesday):
-
-   • [  ] Monday
-   • [  ] Thursday
-   • [  ] Friday
-   • [  ] Saturday
-   • [  ] Sunday
-
-Note: If you have specific dates you’d like to book, 
-please include them in the notes below.
+});
 
 
-2. Description of Tattoo (please be specific):
+/* ==============================
+   LIGHTBOX
+   ============================== */
+
+function openLightbox(image,caption){
+
+const lightbox=document.getElementById("lightbox");
+
+const lightboxImage=
+document.getElementById("lightbox-image");
+
+const lightboxCaption=
+document.getElementById("lightbox-caption");
+
+lightboxImage.src=image;
+
+lightboxImage.alt=caption;
+
+lightboxCaption.textContent=caption;
+
+lightbox.classList.add("active");
+
+document.body.style.overflow="hidden";
+
+}
 
 
-3. Tattoo placement (Example: Right inner forearm or Left bicep):
+/* ==============================
+   CLOSE LIGHTBOX
+   ============================== */
+
+function closeLightbox(event){
+
+if(
+event &&
+event.target !== document.getElementById("lightbox") &&
+event.target !== document.querySelector(".lightbox-close")
+){
+return;
+}
+
+document.getElementById("lightbox")
+.classList.remove("active");
+
+document.body.style.overflow="";
+
+}
 
 
-4. Tattoo size in inches (does not apply to flash tattoos):
+/* ==============================
+   ESC KEY
+   ============================== */
 
+document.addEventListener("keydown",(event)=>{
 
-5. Budget (If any):
+if(event.key==="Escape"){
 
+document.getElementById("lightbox")
+.classList.remove("active");
 
-6. Feel free to attach tattoo inspiration photos/examples to this email here:
+document.body.style.overflow="";
 
-
-━━━━━━━━━━━
-AGREEMENT
-━━━━━━━━━━━
-
-[ ] By checking this box, I confirm that I am 18 years of age or older and have fully read and agreed to the tattoo policies before booking this appointment.
-
-━━━━━━━━━━━
-TATTOO RATES
-━━━━━━━━━━━
-
-• $300 minimum per person (covers up to 2 hours)
-
-• $150/hourly after the first 2 hours
-
-• A $100 non-refundable deposit is required to reserve your appointment. This deposit goes toward your tattoo total on the day of your appointment.
-
-━━━━━━━━━━━━━━━━━━
-
-I typically respond within one to two weeks. If you don't hear back from me, please check your Junk or Spam folder. If it's not there, feel free to send me another email. Please don't forget to review my booking policies before submitting your inquiry if you haven't already.
-
-Lastly, I'm excited to work with you on your tattoo! If you have any questions, don't hesitate to ask.
-
-Thank you!
-
-Best,
-Gigi @Blckmorals.ink`;
-
-document.getElementById("bookingButton").addEventListener("click", function(e){
-
-e.preventDefault();
-
-window.location.href =
-
-"mailto:booking@blckmorals.ink"
-+ "?subject=" + encodeURIComponent("Tattoo Booking Inquiry")
-+ "&body=" + encodeURIComponent(inquiry);
+}
 
 });
 
