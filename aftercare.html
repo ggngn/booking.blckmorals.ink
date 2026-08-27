@@ -1,368 +1,3121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
 <title>BLCKMORALS.INK | Tattoo Aftercare</title>
 
+
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth
+    scroll-behavior:smooth;
+    width:100%;
+    overflow-x:hidden;
 }
 
 body{
-font-family:Helvetica,Arial,sans-serif;
-background:#0f0f0f;
-color:#f2f2f2;
-line-height:1.8;
-background-image:
-linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
-url('background.jpg');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+
+    background:#050505;
+    color:#f2f0eb;
+
+    font-family:Helvetica,Arial,sans-serif;
+    line-height:1.5;
 }
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root{
+
+    --black:#050505;
+
+    --white:#f2f0eb;
+
+    --paper:#e9e7e1;
+
+    --gray:#999791;
+
+    --line:rgba(242,240,235,.25);
+
+    --dark-line:rgba(5,5,5,.22);
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
 
 #progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#fff;
-width:0;
-z-index:1000
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    height:3px;
+
+    width:0;
+
+    background:#fff;
+
+    z-index:9999;
+
 }
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 4vw;
+
+    z-index:500;
+
+    mix-blend-mode:difference;
+
+    font-size:10px;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+}
+
+.nav-logo{
+
+    font-weight:bold;
+
+    letter-spacing:.12em;
+
+    white-space:nowrap;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:28px;
+
+    align-items:center;
+
+}
+
+.nav-links a{
+
+    position:relative;
+
+    white-space:nowrap;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-5px;
+    left:0;
+
+    width:0;
+    height:1px;
+
+    background:#fff;
+
+    transition:.3s ease;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+
+/* =========================================================
+   SECTION BAR
+   ========================================================= */
+
+.section-bar{
+
+    min-height:34px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 1fr;
+
+    align-items:center;
+
+    border-top:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    font-size:8px;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
+
+}
+
+.section-bar span:nth-child(2){
+
+    text-align:center;
+
+}
+
+.section-bar span:nth-child(3){
+
+    text-align:right;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero{
-min-height:70vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:2rem
+
+    min-height:100vh;
+    min-height:100svh;
+
+    padding:100px 4vw 40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    position:relative;
+
 }
 
-.hero p{
-opacity:.8;
-letter-spacing:.3em;
-text-transform:uppercase
+.hero-top{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 1fr;
+
+    gap:20px;
+
+    font-size:9px;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+    opacity:.75;
+
+}
+
+.hero-top div:nth-child(2){
+
+    text-align:center;
+
+}
+
+.hero-top div:nth-child(3){
+
+    text-align:right;
+
+}
+
+.hero-content{
+
+    padding:8vh 0 4vh;
+
+}
+
+.hero-small{
+
+    font-size:9px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+
+    opacity:.65;
+
 }
 
 .hero h1{
-font-size:clamp(2.5rem,9vw,5rem);
-letter-spacing:.08em
+
+    width:100%;
+
+    max-width:1300px;
+
+    font-size:clamp(4rem,12vw,11rem);
+
+    font-weight:500;
+
+    line-height:.78;
+
+    letter-spacing:-.065em;
+
+    text-transform:uppercase;
+
+}
+
+.hero h1 span{
+
+    display:block;
+
+}
+
+.hero h1 span:nth-child(2){
+
+    margin-left:8vw;
+
+}
+
+.hero-description{
+
+    width:100%;
+
+    max-width:360px;
+
+    margin-left:auto;
+
+    margin-top:50px;
+
+    font-size:10px;
+
+    line-height:1.6;
+
+    letter-spacing:.04em;
+
+    text-transform:uppercase;
+
+    opacity:.7;
+
+}
+
+.hero-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:20px;
+
+    font-size:9px;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
 }
 
 .scroll{
-margin-top:3rem;
-opacity:.7;
-animation:bounce 2s infinite
+
+    animation:scrollMove 2s infinite;
+
 }
 
-@keyframes bounce{
-50%{
-transform:translateY(10px)
-}
+@keyframes scrollMove{
+
+    50%{
+
+        transform:translateY(8px);
+
+    }
+
 }
 
-section{
-max-width:900px;
-margin:2rem auto;
-padding:2.2rem;
-background:rgba(255,255,255,.07);
-backdrop-filter:blur(10px);
-border-radius:18px;
-border:1px solid rgba(255,255,255,.08)
+
+/* =========================================================
+   PAPER
+   ========================================================= */
+
+.paper{
+
+    background:var(--paper);
+
+    color:#050505;
+
 }
 
-h2{
-margin-bottom:1rem;
-font-size:2rem
+.paper .section-bar{
+
+    border-color:var(--dark-line);
+
 }
 
-p{
-margin-bottom:1rem
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro{
+
+    padding:0 4vw 10vw;
+
 }
 
-ul{
-padding-left:1.3rem
+.intro-grid{
+
+    min-height:650px;
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+
+    gap:7vw;
+
+    align-items:center;
+
 }
 
-li{
-margin:.5rem 0
+.intro-title{
+
+    font-size:clamp(4rem,10vw,9rem);
+
+    line-height:.77;
+
+    letter-spacing:-.07em;
+
+    text-transform:uppercase;
+
 }
+
+.intro-title span{
+
+    display:block;
+
+}
+
+.intro-copy{
+
+    width:100%;
+
+    max-width:390px;
+
+    align-self:center;
+
+}
+
+.intro-copy h3{
+
+    font-size:9px;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+}
+
+.intro-copy p{
+
+    font-size:11px;
+
+    line-height:1.7;
+
+    margin-bottom:18px;
+
+}
+
+.golden{
+
+    margin-top:40px;
+
+    border-top:1px solid var(--dark-line);
+
+}
+
+.golden div{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:11px 0;
+
+    border-bottom:1px solid var(--dark-line);
+
+    font-size:9px;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================================
+   AFTERCARE ACCORDIONS
+   ========================================================= */
+
+.aftercare{
+
+    background:#050505;
+
+    color:#f2f0eb;
+
+    padding:0 4vw 10vw;
+
+}
+
+.aftercare-title{
+
+    width:100%;
+
+    font-size:clamp(4rem,11vw,10rem);
+
+    line-height:.75;
+
+    letter-spacing:-.07em;
+
+    text-transform:uppercase;
+
+    padding:80px 0;
+
+}
+
+.aftercare-title span{
+
+    display:block;
+
+}
+
+.aftercare-title span:nth-child(2){
+
+    margin-left:7vw;
+
+}
+
+.aftercare-intro{
+
+    width:100%;
+
+    max-width:480px;
+
+    margin-left:auto;
+
+    margin-bottom:70px;
+
+    font-size:10px;
+
+    line-height:1.7;
+
+    text-transform:uppercase;
+
+    opacity:.65;
+
+}
+
+
+/* =========================================================
+   DETAILS / ACCORDION
+   ========================================================= */
 
 details{
-margin:1rem 0
+
+    width:100%;
+
+    border-top:1px solid var(--line);
+
+}
+
+details:last-child{
+
+    border-bottom:1px solid var(--line);
+
 }
 
 summary{
-cursor:pointer;
-font-weight:bold
+
+    cursor:pointer;
+
+    list-style:none;
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:70px minmax(0,1fr) 30px;
+
+    align-items:center;
+
+    padding:21px 0;
+
+    font-size:10px;
+
+    line-height:1.45;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
 }
 
-a.button{
-display:inline-block;
-padding:15px 28px;
-border:1px solid #fff;
-border-radius:999px;
-color:#fff;
-text-decoration:none;
-transition:.3s
+summary::-webkit-details-marker{
+
+    display:none;
+
 }
 
-a.button:hover{
-background:#fff;
-color:#000
+summary::after{
+
+    content:"+";
+
+    font-size:18px;
+
+    font-weight:300;
+
+    text-align:right;
+
 }
+
+details[open] summary::after{
+
+    content:"−";
+
+}
+
+.detail-number{
+
+    opacity:.4;
+
+}
+
+.detail-content{
+
+    width:100%;
+
+    max-width:700px;
+
+    padding:0 0 30px 70px;
+
+    font-size:11px;
+
+    line-height:1.7;
+
+    opacity:.82;
+
+}
+
+.detail-content p{
+
+    margin-bottom:15px;
+
+}
+
+.detail-content ul{
+
+    padding-left:17px;
+
+}
+
+.detail-content li{
+
+    margin:7px 0;
+
+}
+
+.detail-content strong{
+
+    color:#fff;
+
+}
+
+
+/* =========================================================
+   REMEMBER SECTION
+   ========================================================= */
+
+.remember{
+
+    padding:0 4vw 10vw;
+
+}
+
+.remember-layout{
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+
+    gap:7vw;
+
+    padding-top:80px;
+
+}
+
+.remember-title{
+
+    font-size:clamp(4rem,10vw,9rem);
+
+    line-height:.76;
+
+    letter-spacing:-.07em;
+
+    text-transform:uppercase;
+
+}
+
+.remember-title span{
+
+    display:block;
+
+}
+
+.remember-copy{
+
+    align-self:end;
+
+}
+
+.remember-list{
+
+    border-top:1px solid var(--dark-line);
+
+}
+
+.remember-item{
+
+    display:grid;
+
+    grid-template-columns:40px 1fr;
+
+    padding:15px 0;
+
+    border-bottom:1px solid var(--dark-line);
+
+    font-size:10px;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+}
+
+.remember-item span:first-child{
+
+    opacity:.4;
+
+}
+
+
+/* =========================================================
+   HELP SECTION
+   ========================================================= */
+
+.help{
+
+    background:#050505;
+
+    color:#f2f0eb;
+
+    padding:0 4vw 10vw;
+
+}
+
+.help-layout{
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+
+    gap:7vw;
+
+    padding:80px 0;
+
+}
+
+.help-title{
+
+    font-size:clamp(4rem,10vw,9rem);
+
+    line-height:.76;
+
+    letter-spacing:-.07em;
+
+    text-transform:uppercase;
+
+}
+
+.help-title span{
+
+    display:block;
+
+}
+
+.help-copy{
+
+    width:100%;
+
+    max-width:370px;
+
+    align-self:end;
+
+}
+
+.help-copy p{
+
+    margin-bottom:18px;
+
+    font-size:10px;
+
+    line-height:1.7;
+
+    text-transform:uppercase;
+
+    opacity:.7;
+
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.cta{
+
+    min-height:80vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:70px 4vw 40px;
+
+}
+
+.cta-title{
+
+    width:100%;
+
+    font-size:clamp(5rem,14vw,13rem);
+
+    line-height:.7;
+
+    letter-spacing:-.08em;
+
+    text-transform:uppercase;
+
+}
+
+.cta-title span{
+
+    display:block;
+
+}
+
+.cta-title span:nth-child(2){
+
+    margin-left:10vw;
+
+}
+
+.cta-bottom{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr 1fr;
+
+    align-items:end;
+
+    gap:20px;
+
+    font-size:9px;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+}
+
+.cta-center{
+
+    text-align:center;
+
+}
+
+.cta-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border:1px solid #f2f0eb;
+
+    padding:17px 28px;
+
+    transition:.3s ease;
+
+}
+
+.cta-button:hover{
+
+    background:#f2f0eb;
+
+    color:#050505;
+
+}
+
+.cta-bottom > div:last-child{
+
+    text-align:right;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer{
-text-align:center;
-padding:4rem 2rem;
-opacity:.7
+
+    border-top:1px solid var(--line);
+
+    padding:25px 4vw 35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    font-size:8px;
+
+    letter-spacing:.15em;
+
+    text-transform:uppercase;
+
+    opacity:.6;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:800px){
+
+
+    html,
+    body{
+
+        width:100%;
+
+        max-width:100%;
+
+        overflow-x:hidden;
+
+    }
+
+
+    /* NAV */
+
+    .nav{
+
+        height:62px;
+
+        padding:0 5vw;
+
+        font-size:9px;
+
+    }
+
+    .nav-links{
+
+        gap:15px;
+
+    }
+
+    .nav-links a:nth-child(2),
+    .nav-links a:nth-child(3){
+
+        display:none;
+
+    }
+
+
+    /* HERO */
+
+    .hero{
+
+        min-height:100svh;
+
+        padding:85px 5vw 28px;
+
+    }
+
+    .hero-top{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:10px;
+
+        font-size:8px;
+
+    }
+
+    .hero-top div:nth-child(2){
+
+        display:none;
+
+    }
+
+    .hero h1{
+
+        max-width:100%;
+
+        font-size:clamp(3.5rem,16vw,7rem);
+
+        line-height:.8;
+
+        letter-spacing:-.06em;
+
+    }
+
+    .hero h1 span:nth-child(2){
+
+        margin-left:4vw;
+
+    }
+
+    .hero-description{
+
+        width:82%;
+
+        max-width:290px;
+
+        margin-left:18%;
+
+        margin-top:35px;
+
+        font-size:9px;
+
+    }
+
+    .hero-bottom{
+
+        font-size:7px;
+
+        letter-spacing:.1em;
+
+    }
+
+
+    /* SECTIONS */
+
+    .intro,
+    .aftercare,
+    .remember,
+    .help{
+
+        padding-left:5vw;
+
+        padding-right:5vw;
+
+    }
+
+
+    /* SECTION BAR */
+
+    .section-bar{
+
+        min-height:36px;
+
+        grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+
+        padding:8px 0;
+
+        font-size:7px;
+
+        line-height:1.3;
+
+        letter-spacing:.12em;
+
+    }
+
+    .section-bar span:nth-child(2){
+
+        text-align:right;
+
+    }
+
+    .section-bar span:nth-child(3){
+
+        display:none;
+
+    }
+
+
+    /* INTRO */
+
+    .intro-grid{
+
+        min-height:auto;
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+        padding:60px 0;
+
+    }
+
+    .intro-title{
+
+        font-size:clamp(3.4rem,15.5vw,6.4rem);
+
+        line-height:.8;
+
+    }
+
+    .intro-copy{
+
+        width:85%;
+
+        max-width:320px;
+
+        margin-left:15%;
+
+    }
+
+
+    /* AFTERCARE */
+
+    .aftercare-title{
+
+        padding:55px 0;
+
+        font-size:clamp(3.3rem,15vw,6.3rem);
+
+        line-height:.8;
+
+    }
+
+    .aftercare-title span:nth-child(2){
+
+        margin-left:5vw;
+
+    }
+
+    .aftercare-intro{
+
+        width:85%;
+
+        max-width:320px;
+
+        margin-left:15%;
+
+        margin-bottom:55px;
+
+        font-size:9px;
+
+    }
+
+
+    /* ACCORDIONS */
+
+    summary{
+
+        grid-template-columns:36px minmax(0,1fr) 22px;
+
+        gap:6px;
+
+        padding:18px 0;
+
+        font-size:8.5px;
+
+        line-height:1.4;
+
+        letter-spacing:.075em;
+
+    }
+
+    summary::after{
+
+        font-size:16px;
+
+    }
+
+    .detail-content{
+
+        width:100%;
+
+        max-width:100%;
+
+        padding-left:36px;
+
+        padding-right:6px;
+
+        padding-bottom:24px;
+
+        font-size:10px;
+
+        line-height:1.65;
+
+    }
+
+
+    /* REMEMBER */
+
+    .remember-layout{
+
+        grid-template-columns:1fr;
+
+        gap:45px;
+
+        padding:60px 0;
+
+    }
+
+    .remember-title{
+
+        font-size:clamp(3.3rem,15vw,6.3rem);
+
+        line-height:.8;
+
+    }
+
+    .remember-copy{
+
+        width:85%;
+
+        margin-left:15%;
+
+    }
+
+
+    /* HELP */
+
+    .help-layout{
+
+        grid-template-columns:1fr;
+
+        gap:45px;
+
+        padding:60px 0;
+
+    }
+
+    .help-title{
+
+        font-size:clamp(3.3rem,15vw,6.3rem);
+
+        line-height:.8;
+
+    }
+
+    .help-copy{
+
+        width:85%;
+
+        margin-left:15%;
+
+    }
+
+
+    /* CTA */
+
+    .cta{
+
+        min-height:78svh;
+
+        padding:60px 5vw 35px;
+
+    }
+
+    .cta-title{
+
+        font-size:clamp(3.7rem,16.5vw,7rem);
+
+        line-height:.75;
+
+        letter-spacing:-.06em;
+
+    }
+
+    .cta-title span:nth-child(2){
+
+        margin-left:6vw;
+
+    }
+
+    .cta-bottom{
+
+        grid-template-columns:1fr;
+
+        gap:28px;
+
+        align-items:start;
+
+        margin-top:60px;
+
+    }
+
+    .cta-center{
+
+        text-align:left;
+
+    }
+
+    .cta-button{
+
+        justify-content:flex-start;
+
+        padding:15px 20px;
+
+        font-size:8px;
+
+    }
+
+    .cta-bottom > div:last-child{
+
+        text-align:left;
+
+    }
+
+
+    /* FOOTER */
+
+    footer{
+
+        padding-left:5vw;
+
+        padding-right:5vw;
+
+        gap:15px;
+
+        font-size:6.5px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:390px){
+
+    .nav{
+
+        font-size:8px;
+
+    }
+
+    .nav-links{
+
+        gap:10px;
+
+    }
+
+    .hero h1{
+
+        font-size:clamp(3.1rem,15.5vw,6rem);
+
+    }
+
+    .intro-title,
+    .aftercare-title,
+    .remember-title,
+    .help-title{
+
+        font-size:clamp(3rem,14vw,5.7rem);
+
+    }
+
+    .cta-title{
+
+        font-size:clamp(3.4rem,15.5vw,6.3rem);
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+
+        scroll-behavior:auto;
+
+    }
+
+    *,
+    *::before,
+    *::after{
+
+        animation:none !important;
+
+        transition:none !important;
+
+    }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ======================================================
+     PROGRESS
+     ====================================================== -->
+
 <div id="progress"></div>
+
+
+
+<!-- ======================================================
+     NAVIGATION
+     ====================================================== -->
+
+<nav class="nav">
+
+    <a
+        href="index.html"
+        class="nav-logo"
+    >
+
+        BLCKMORALS.INK
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="policies.html">
+
+            Client Guide
+
+        </a>
+
+        <a href="healed-work.html">
+
+            Healed Work
+
+        </a>
+
+        <a href="#aftercare">
+
+            Aftercare
+
+        </a>
+
+        <a href="index.html">
+
+            Home
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
 
 <header class="hero">
 
-<p>BLCKMORALS.INK</p>
 
-<h1>TATTOO AFTERCARE</h1>
+    <div class="hero-top">
 
-<div class="scroll">↓ Scroll</div>
+        <div>
+
+            BLCKMORALS.INK
+
+        </div>
+
+        <div>
+
+            TATTOO AFTERCARE
+
+        </div>
+
+        <div>
+
+            PORTLAND / OR
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-content">
+
+
+        <div class="hero-small">
+
+            00 — AFTER YOUR APPOINTMENT
+
+        </div>
+
+
+        <h1>
+
+            <span>
+
+                TATTOO
+
+            </span>
+
+            <span>
+
+                AFTERCARE
+
+            </span>
+
+        </h1>
+
+
+        <div class="hero-description">
+
+            Your tattoo doesn't end when the
+            session does. Proper aftercare helps
+            protect your skin, preserve your tattoo,
+            and give it the best chance to heal well.
+
+        </div>
+
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <div>
+
+            BLCKMORALS.INK
+
+        </div>
+
+        <div class="scroll">
+
+            ↓ SCROLL
+
+        </div>
+
+        <div>
+
+            CARE / 01
+
+        </div>
+
+    </div>
+
 
 </header>
 
-<section>
 
-<h2>Aftercare</h2>
 
-<details>
-<summary>FOLLOW YOUR ARTIST'S AFTERCARE INSTRUCTIONS</summary>
-<ul>
-<li>Your artist knows how your tattoo was applied and what is best for your specific piece.</li>
-<li>If you have questions or concerns during healing, reach out to your artist before changing your aftercare routine.</li>
-</ul>
-</details>
+<!-- ======================================================
+     INTRO
+     ====================================================== -->
 
-<details>
-<summary>FIRST 3 - 4 DAYS — SECOND SKIN</summary>
-<ul>
-<li>Keep the second-skin bandage on for 3 - 4 days.</li>
-<li>A small amount of blood, plasma, or ink underneath the bandage is normal.</li>
-<li>Remove the bandage sooner if it becomes loose, water gets underneath it, or you develop significant irritation.</li>
-<li>Ideally, remove the bandage toward the end of a shower to help loosen the adhesive.</li>
-<li>Do not aggressively pull the bandage off while it is completely dry.</li>
-<li>Slowly peel and pull the bandage, stretching it and let the bandage unravel itself as you pull.</li>
-</ul>
-</details>
+<section class="paper intro">
 
-<details>
-<summary>AFTER REMOVING THE BANDAGE</summary>
-<ul>
-<li>Wash your hands before touching your tattoo.</li>
-<li>Gently wash the tattoo with lukewarm water and mild, fragrance-free liquid soap.</li>
-<li>Use only your clean fingertips.</li>
-<li>Do not use bar soap, washcloths, loofahs, or sponges.</li>
-<li>Do not scrub or exfoliate the tattoo.</li>
-<li>Rinse thoroughly.</li>
-<li>Gently pat dry with a clean paper towel — do not rub.</li>
-<li>Allow the tattoo to air-dry briefly if needed.</li>
-</ul>
-</details>
 
-<details>
-<summary>MOISTURIZE</summary>
-<ul>
-<li>Apply a very thin layer of lightweight, fragrance-free lotion.</li>
-<li>A little goes a long way.</li>
-<li>Moisturize approximately 2 - 3 times daily or as needed.</li>
-<li>Your tattoo should not look greasy, wet, or excessively shiny.</li>
-<li>If using ointment, use only a very thin layer and preferably one recommended by your artist.</li>
-<li>Avoid heavy layers of petroleum-based products.</li>
-</ul>
-</details>
+    <div class="section-bar">
 
-<details>
-<summary>WHAT'S NORMAL</summary>
-<ul>
-<li>Mild redness, swelling, tenderness, or warmth</li>
-<li>Slight clear or tinted fluid</li>
-<li>Itching</li>
-<li>Dryness or tightness</li>
-<li>Peeling or flaking</li>
-<li>A dull, cloudy, or slightly uneven appearance while healing</li>
-</ul>
+        <span>
 
-<p><strong>DO NOT PICK, SCRATCH, OR PEEL YOUR TATTOO.</strong></p>
+            PART 01
 
-<ul>
-<li>Let peeling skin fall away naturally.</li>
-<li>If it's itchy, gently pat or tap the area instead of scratching.</li>
-</ul>
-</details>
+        </span>
 
-<details>
-<summary>SUN PROTECTION</summary>
-<ul>
-<li>Keep your healing tattoo out of direct sunlight.</li>
-<li>Do not apply sunscreen to an unhealed tattoo.</li>
-<li>Once completely healed, use SPF 30–50+ whenever your tattoo is exposed to the sun.</li>
-<li>Sun exposure can cause tattoos to fade faster.</li>
-</ul>
-</details>
+        <span>
 
-<details>
-<summary>CLOTHING & FRICTION</summary>
-<ul>
-<li>Wear clean, loose-fitting clothing when possible.</li>
-<li>Avoid tight clothing, straps, waistbands, or anything that repeatedly rubs against the tattoo.</li>
-<li>Be especially mindful of friction during the first week.</li>
-</ul>
-</details>
+            HEALING BASICS
 
-<details>
-<summary>WATER & SOAKING</summary>
-<ul>
-<li>Normal showers are okay.</li>
-<li>Avoid excessively hot or prolonged showers.</li>
-<li><strong>Do NOT submerge your tattoo until it is fully healed.</strong></li>
-<li>Avoid baths.</li>
-<li>Avoid swimming pools.</li>
-<li>Avoid hot tubs / Jacuzzis.</li>
-<li>Avoid lakes.</li>
-<li>Avoid rivers.</li>
-<li>Avoid oceans.</li>
-<li>Avoid saunas and steam rooms.</li>
-</ul>
-</details>
+        </span>
 
-<details>
-<summary>EXERCISE</summary>
-<ul>
-<li>Be mindful of excessive sweating, friction, stretching, and contact with the tattoo.</li>
-<li>Avoid workouts or equipment that repeatedly rub against the healing area.</li>
-<li>Keep gym equipment and anything touching the tattoo clean.</li>
-</ul>
-</details>
+        <span>
 
-<details>
-<summary>SLEEPING</summary>
-<ul>
-<li>Keep your bedding clean while your tattoo is healing.</li>
-<li>Avoid sleeping directly on the tattoo when possible.</li>
-<li>If your tattoo sticks to fabric, do not pull it off dry.</li>
-<li>Moisten the fabric with lukewarm water and gently release it.</li>
-</ul>
-</details>
+            START HERE
 
-<details>
-<summary>PETS</summary>
-<ul>
-<li>Keep pets from licking, scratching, or rubbing against your tattoo.</li>
-<li>Avoid direct contact with pet hair, saliva, and dirty pet bedding while your tattoo is healing.</li>
-</ul>
-</details>
+        </span>
 
-<details>
-<summary>TAKE CARE OF YOURSELF</summary>
-<ul>
-<li>Stay hydrated.</li>
-<li>Eat regular, balanced meals.</li>
-<li>Get enough rest.</li>
-<li>Your body needs time and energy to heal your skin.</li>
-</ul>
-</details>
+    </div>
 
-<details>
-<summary>AVOID</summary>
-<ul>
-<li>Picking or scratching</li>
-<li>Peeling the tattoo</li>
-<li>Scrubbing or exfoliating</li>
-<li>Fragranced lotions or harsh products</li>
-<li>Heavy layers of moisturizer</li>
-<li>Direct sunlight</li>
-<li>Sunscreen on an unhealed tattoo</li>
-<li>Swimming or soaking</li>
-<li>Hot tubs and baths</li>
-<li>Tight clothing or excessive friction</li>
-<li>Letting pets lick or rub against the tattoo</li>
-<li>Using unfamiliar products without checking with your artist</li>
-</ul>
-</details>
 
-<details>
-<summary>HEALING TIME</summary>
-<ul>
-<li>Most tattoos take approximately 2–4 weeks for the surface of the skin to heal.</li>
-<li>Deeper layers can continue healing beyond this.</li>
-<li>Your tattoo may look dull, cloudy, dry, or flaky during healing.</li>
-<li>Don't judge the final appearance while your tattoo is still healing.</li>
-<li>Be patient and allow your skin to heal at its own pace.</li>
-</ul>
-</details>
+    <div class="intro-grid">
 
-<details>
-<summary>WHEN TO GET HELP</summary>
-<ul>
-<li>If something about your tattoo concerns you, contact your artist.</li>
-<li>If symptoms become severe, unusual, or progressively worse, seek advice from a qualified medical professional.</li>
-<li>Your artist can provide tattoo aftercare guidance but cannot diagnose medical conditions or infections.</li>
-</ul>
-</details>
 
-<details>
-<summary>THE GOLDEN RULES</summary>
-<ul>
-<li><strong>KEEP IT CLEAN.</strong></li>
-<li><strong>KEEP IT LIGHTLY MOISTURIZED.</strong></li>
-<li><strong>DON'T PICK IT.</strong></li>
-<li><strong>DON'T SOAK IT.</strong></li>
-<li><strong>KEEP IT OUT OF THE SUN.</strong></li>
-<li><strong>LET YOUR SKIN HEAL.</strong></li>
-</ul>
-</details>
+        <div class="intro-title">
+
+            <span>
+
+                HEAL
+
+            </span>
+
+            <span>
+
+                IT
+
+            </span>
+
+            <span>
+
+                WELL
+
+            </span>
+
+        </div>
+
+
+        <div class="intro-copy">
+
+
+            <h3>
+
+                YOUR HEALING PROCESS
+
+            </h3>
+
+
+            <p>
+
+                A fresh tattoo is healing skin.
+                During the first few weeks,
+                keeping it clean and minimizing
+                irritation is one of the most
+                important things you can do.
+
+            </p>
+
+
+            <p>
+
+                Healing varies from person to person
+                and even from tattoo to tattoo.
+                Placement, size, skin type, lifestyle,
+                and your body's natural healing process
+                can all affect how quickly it settles.
+
+            </p>
+
+
+            <p>
+
+                If anything concerns you during healing,
+                you're always welcome to reach out.
+
+            </p>
+
+
+            <div class="golden">
+
+                <div>
+
+                    <span>01</span>
+
+                    <span>KEEP IT CLEAN</span>
+
+                </div>
+
+                <div>
+
+                    <span>02</span>
+
+                    <span>MOISTURIZE LIGHTLY</span>
+
+                </div>
+
+                <div>
+
+                    <span>03</span>
+
+                    <span>DON'T PICK IT</span>
+
+                </div>
+
+                <div>
+
+                    <span>04</span>
+
+                    <span>DON'T SOAK IT</span>
+
+                </div>
+
+                <div>
+
+                    <span>05</span>
+
+                    <span>KEEP IT OUT OF THE SUN</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
 
 </section>
 
-<section style="text-align:center">
 
-<a class="button" href="index.html">
-← Back to main page
-</a>
+
+<!-- ======================================================
+     AFTERCARE GUIDE
+     ====================================================== -->
+
+<section
+    class="aftercare"
+    id="aftercare"
+>
+
+
+    <div class="section-bar">
+
+        <span>
+
+            PART 02
+
+        </span>
+
+        <span>
+
+            AFTERCARE GUIDE
+
+        </span>
+
+        <span>
+
+            STEP BY STEP
+
+        </span>
+
+    </div>
+
+
+    <div class="aftercare-title">
+
+        <span>
+
+            TAKE
+
+        </span>
+
+        <span>
+
+            CARE
+
+        </span>
+
+    </div>
+
+
+    <div class="aftercare-intro">
+
+        Follow the instructions given at your
+        appointment and use the guide below
+        throughout the healing process.
+
+    </div>
+
+
+
+    <!-- 01 -->
+
+    <details open>
+
+        <summary>
+
+            <span class="detail-number">
+
+                01
+
+            </span>
+
+            <span>
+
+                Follow Your Artist's Instructions
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Your artist knows how your tattoo
+                    was applied and what is best for
+                    your specific piece.
+                </li>
+
+                <li>
+                    If you have questions or concerns
+                    during healing, reach out to your
+                    artist before changing your
+                    aftercare routine.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 02 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                02
+
+            </span>
+
+            <span>
+
+                First 3–4 Days — Second Skin
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep the second-skin bandage
+                    on for approximately 3–4 days.
+                </li>
+
+                <li>
+                    A small amount of blood, plasma,
+                    or ink underneath the bandage
+                    is normal.
+                </li>
+
+                <li>
+                    Remove the bandage sooner if
+                    it becomes loose, water gets
+                    underneath it, or you develop
+                    significant irritation.
+                </li>
+
+                <li>
+                    Ideally, remove the bandage
+                    toward the end of a shower
+                    to help loosen the adhesive.
+                </li>
+
+                <li>
+                    Do not aggressively pull the
+                    bandage off while it is
+                    completely dry.
+                </li>
+
+                <li>
+                    Slowly peel it back over itself,
+                    stretching the bandage as you go,
+                    rather than pulling directly
+                    upward from the skin.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 03 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                03
+
+            </span>
+
+            <span>
+
+                After Removing the Bandage
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Wash your hands before touching
+                    your tattoo.
+                </li>
+
+                <li>
+                    Gently wash the tattoo with
+                    lukewarm water and mild,
+                    fragrance-free liquid soap.
+                </li>
+
+                <li>
+                    Use only your clean fingertips.
+                </li>
+
+                <li>
+                    Do not use bar soap, washcloths,
+                    loofahs, or sponges.
+                </li>
+
+                <li>
+                    Do not scrub or exfoliate
+                    the tattoo.
+                </li>
+
+                <li>
+                    Rinse thoroughly.
+                </li>
+
+                <li>
+                    Gently pat dry with a clean
+                    paper towel — do not rub.
+                </li>
+
+                <li>
+                    Allow the tattoo to air-dry
+                    briefly if needed.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 04 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                04
+
+            </span>
+
+            <span>
+
+                Moisturize
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Apply a very thin layer of
+                    lightweight, fragrance-free lotion.
+                </li>
+
+                <li>
+                    A little goes a long way.
+                </li>
+
+                <li>
+                    Moisturize approximately
+                    2–3 times daily or as needed.
+                </li>
+
+                <li>
+                    Your tattoo should not look
+                    greasy, wet, or excessively shiny.
+                </li>
+
+                <li>
+                    Avoid heavy layers of
+                    petroleum-based products.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 05 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                05
+
+            </span>
+
+            <span>
+
+                What's Normal
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Mild redness, swelling,
+                    tenderness, or warmth
+                </li>
+
+                <li>
+                    Slight clear or tinted fluid
+                </li>
+
+                <li>
+                    Itching
+                </li>
+
+                <li>
+                    Dryness or tightness
+                </li>
+
+                <li>
+                    Peeling or flaking
+                </li>
+
+                <li>
+                    A dull, cloudy, or slightly
+                    uneven appearance while healing
+                </li>
+
+            </ul>
+
+
+            <p>
+
+                <strong>
+
+                    DO NOT PICK, SCRATCH,
+                    OR PEEL YOUR TATTOO.
+
+                </strong>
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Let peeling skin fall away naturally.
+                </li>
+
+                <li>
+                    If it's itchy, gently pat or tap
+                    the area instead of scratching.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 06 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                06
+
+            </span>
+
+            <span>
+
+                Sun Protection
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep your healing tattoo out
+                    of direct sunlight.
+                </li>
+
+                <li>
+                    Do not apply sunscreen to
+                    an unhealed tattoo.
+                </li>
+
+                <li>
+                    Once completely healed,
+                    use SPF 30–50+ whenever your
+                    tattoo is exposed to the sun.
+                </li>
+
+                <li>
+                    Sun exposure can cause tattoos
+                    to fade faster.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 07 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                07
+
+            </span>
+
+            <span>
+
+                Clothing & Friction
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Wear clean, loose-fitting
+                    clothing when possible.
+                </li>
+
+                <li>
+                    Avoid tight clothing, straps,
+                    waistbands, or anything that
+                    repeatedly rubs against the tattoo.
+                </li>
+
+                <li>
+                    Be especially mindful of friction
+                    during the first week.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 08 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                08
+
+            </span>
+
+            <span>
+
+                Water & Soaking
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Normal showers are okay.
+                </li>
+
+                <li>
+                    Avoid excessively hot or
+                    prolonged showers.
+                </li>
+
+                <li>
+                    <strong>
+                        Do NOT submerge your tattoo
+                        until it is fully healed.
+                    </strong>
+                </li>
+
+                <li>
+                    Avoid baths.
+                </li>
+
+                <li>
+                    Avoid swimming pools.
+                </li>
+
+                <li>
+                    Avoid hot tubs or Jacuzzis.
+                </li>
+
+                <li>
+                    Avoid lakes.
+                </li>
+
+                <li>
+                    Avoid rivers.
+                </li>
+
+                <li>
+                    Avoid oceans.
+                </li>
+
+                <li>
+                    Avoid saunas and steam rooms.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 09 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                09
+
+            </span>
+
+            <span>
+
+                Exercise
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Be mindful of excessive sweating,
+                    friction, stretching, and contact
+                    with the tattoo.
+                </li>
+
+                <li>
+                    Avoid workouts or equipment that
+                    repeatedly rub against the
+                    healing area.
+                </li>
+
+                <li>
+                    Keep gym equipment and anything
+                    touching the tattoo clean.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 10 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                10
+
+            </span>
+
+            <span>
+
+                Sleeping
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep your bedding clean while
+                    your tattoo is healing.
+                </li>
+
+                <li>
+                    Avoid sleeping directly on
+                    the tattoo when possible.
+                </li>
+
+                <li>
+                    If your tattoo sticks to fabric,
+                    do not pull it off dry.
+                </li>
+
+                <li>
+                    Moisten the fabric with lukewarm
+                    water and gently release it.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 11 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                11
+
+            </span>
+
+            <span>
+
+                Pets
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Keep pets from licking, scratching,
+                    or rubbing against your tattoo.
+                </li>
+
+                <li>
+                    Avoid direct contact with pet hair,
+                    saliva, and dirty pet bedding while
+                    your tattoo is healing.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 12 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                12
+
+            </span>
+
+            <span>
+
+                Take Care of Yourself
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Stay hydrated.
+                </li>
+
+                <li>
+                    Eat regular, balanced meals.
+                </li>
+
+                <li>
+                    Get enough rest.
+                </li>
+
+                <li>
+                    Your body needs time and energy
+                    to heal your skin.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 13 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                13
+
+            </span>
+
+            <span>
+
+                Avoid
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Picking or scratching
+                </li>
+
+                <li>
+                    Peeling the tattoo
+                </li>
+
+                <li>
+                    Scrubbing or exfoliating
+                </li>
+
+                <li>
+                    Fragranced lotions or harsh products
+                </li>
+
+                <li>
+                    Heavy layers of moisturizer
+                </li>
+
+                <li>
+                    Direct sunlight
+                </li>
+
+                <li>
+                    Sunscreen on an unhealed tattoo
+                </li>
+
+                <li>
+                    Swimming or soaking
+                </li>
+
+                <li>
+                    Hot tubs and baths
+                </li>
+
+                <li>
+                    Tight clothing or excessive friction
+                </li>
+
+                <li>
+                    Letting pets lick or rub
+                    against the tattoo
+                </li>
+
+                <li>
+                    Using unfamiliar products without
+                    checking with your artist
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 14 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                14
+
+            </span>
+
+            <span>
+
+                Healing Time
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    Most tattoos take approximately
+                    2–4 weeks for the surface of
+                    the skin to heal.
+                </li>
+
+                <li>
+                    Deeper layers can continue
+                    healing beyond this.
+                </li>
+
+                <li>
+                    Your tattoo may look dull,
+                    cloudy, dry, or flaky during healing.
+                </li>
+
+                <li>
+                    Don't judge the final appearance
+                    while your tattoo is still healing.
+                </li>
+
+                <li>
+                    Be patient and allow your skin
+                    to heal at its own pace.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
+
+
+    <!-- 15 -->
+
+    <details>
+
+        <summary>
+
+            <span class="detail-number">
+
+                15
+
+            </span>
+
+            <span>
+
+                When to Get Help
+
+            </span>
+
+        </summary>
+
+
+        <div class="detail-content">
+
+            <ul>
+
+                <li>
+                    If something about your tattoo
+                    concerns you, contact your artist.
+                </li>
+
+                <li>
+                    If symptoms become severe,
+                    unusual, or progressively worse,
+                    seek advice from a qualified
+                    medical professional.
+                </li>
+
+                <li>
+                    Your artist can provide tattoo
+                    aftercare guidance but cannot
+                    diagnose medical conditions
+                    or infections.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </details>
+
 
 </section>
+
+
+
+<!-- ======================================================
+     GOLDEN RULES
+     ====================================================== -->
+
+<section class="paper remember">
+
+
+    <div class="section-bar">
+
+        <span>
+
+            PART 03
+
+        </span>
+
+        <span>
+
+            GOLDEN RULES
+
+        </span>
+
+        <span>
+
+            REMEMBER THESE
+
+        </span>
+
+    </div>
+
+
+    <div class="remember-layout">
+
+
+        <div class="remember-title">
+
+            <span>
+
+                KEEP
+
+            </span>
+
+            <span>
+
+                IT
+
+            </span>
+
+            <span>
+
+                SIMPLE
+
+            </span>
+
+        </div>
+
+
+        <div class="remember-copy">
+
+
+            <div class="remember-list">
+
+
+                <div class="remember-item">
+
+                    <span>01</span>
+
+                    <span>KEEP IT CLEAN.</span>
+
+                </div>
+
+
+                <div class="remember-item">
+
+                    <span>02</span>
+
+                    <span>KEEP IT LIGHTLY MOISTURIZED.</span>
+
+                </div>
+
+
+                <div class="remember-item">
+
+                    <span>03</span>
+
+                    <span>DON'T PICK IT.</span>
+
+                </div>
+
+
+                <div class="remember-item">
+
+                    <span>04</span>
+
+                    <span>DON'T SOAK IT.</span>
+
+                </div>
+
+
+                <div class="remember-item">
+
+                    <span>05</span>
+
+                    <span>KEEP IT OUT OF THE SUN.</span>
+
+                </div>
+
+
+                <div class="remember-item">
+
+                    <span>06</span>
+
+                    <span>LET YOUR SKIN HEAL.</span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     QUESTIONS
+     ====================================================== -->
+
+<section class="help">
+
+
+    <div class="section-bar">
+
+        <span>
+
+            PART 04
+
+        </span>
+
+        <span>
+
+            QUESTIONS
+
+        </span>
+
+        <span>
+
+            AFTER YOUR APPOINTMENT
+
+        </span>
+
+    </div>
+
+
+    <div class="help-layout">
+
+
+        <div class="help-title">
+
+            <span>
+
+                NOT
+
+            </span>
+
+            <span>
+
+                SURE?
+
+            </span>
+
+        </div>
+
+
+        <div class="help-copy">
+
+
+            <p>
+
+                Healing can look a little weird
+                before it looks pretty again.
+
+            </p>
+
+
+            <p>
+
+                Dryness, peeling, itching, and
+                temporary dullness can all be
+                normal parts of the healing process.
+
+            </p>
+
+
+            <p>
+
+                If you're unsure about something,
+                contact me rather than experimenting
+                with new products or changing your
+                routine on your own.
+
+            </p>
+
+
+            <p>
+
+                For severe, unusual, or worsening
+                symptoms, contact a qualified
+                medical professional.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     FINAL CTA
+     ====================================================== -->
+
+<section class="cta">
+
+
+    <div>
+
+
+        <div class="hero-small">
+
+            BACK TO BLCKMORALS
+
+        </div>
+
+
+        <div class="cta-title">
+
+            <span>
+
+                HEAL
+
+            </span>
+
+            <span>
+
+                BEAUTIFULLY.
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="cta-bottom">
+
+
+        <div>
+
+            BLCKMORALS.INK
+
+            <br>
+
+            PORTLAND / OR
+
+        </div>
+
+
+        <div class="cta-center">
+
+
+            <a
+                href="index.html"
+                class="cta-button"
+            >
+
+                ← BACK TO MAIN PAGE
+
+            </a>
+
+
+        </div>
+
+
+        <div>
+
+            AFTERCARE
+
+            <br>
+
+            END / 04
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
 
 <footer>
-© BLCKMORALS.INK
+
+
+    <span>
+
+        © BLCKMORALS.INK
+
+    </span>
+
+
+    <span>
+
+        TATTOO / ART / PORTLAND
+
+    </span>
+
+
 </footer>
+
+
+
+<!-- ======================================================
+     SCRIPT
+     ====================================================== -->
 
 <script>
 
-addEventListener("scroll",()=>{
-const d=document.documentElement;
-document.getElementById("progress").style.width=
-(d.scrollTop/(d.scrollHeight-d.clientHeight))*100+"%";
-});
+
+/* ======================================================
+   SCROLL PROGRESS
+   ====================================================== */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+
+        const scroll =
+            document.documentElement.scrollTop;
+
+        const percentage =
+            documentHeight > 0
+            ? (scroll / documentHeight) * 100
+            : 0;
+
+        document.getElementById("progress").style.width =
+            percentage + "%";
+
+    }
+);
+
+
+
+/* ======================================================
+   CLOSE OTHER ACCORDIONS
+   ====================================================== */
+
+const details =
+    document.querySelectorAll("details");
+
+
+details.forEach(
+    function(target){
+
+        target.addEventListener(
+            "toggle",
+            function(){
+
+                if(!target.open){
+
+                    return;
+
+                }
+
+                details.forEach(
+                    function(other){
+
+                        if(
+                            other !== target &&
+                            other.open
+                        ){
+
+                            other.open = false;
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
 
 </script>
 
-</body>
-</html>
 
+</body>
+
+</html>
